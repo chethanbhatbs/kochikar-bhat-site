@@ -1,36 +1,24 @@
-# Bhat and Kochikar Advocates: design system
+# Bhat and Kochikar Advocates: design system (v4, 2026-10-20)
 
-Direction: quiet, factual law-firm page. Taken from the logo: deep green, muted gold, paper cream.
-Bar Council of India Rule 36: no solicitation. Copy states facts only (no "best", no testimonials, no results).
+Modelled on the owner's reference, cms-induslaw.com (jsalaw.com blocks automated browsers):
+dark hero, white body, dark footer, ONE bright accent on buttons, modern sans headings, native scroll.
+
+Owner's rejections, do not reintroduce:
+- v1 cream + serif + hairline list: "looks like 1990s"
+- v2 green section backgrounds: "don't add green background"
+- v3 all-light cream, preloader, smooth-scroll (Lenis), marquee, scroll-scrubbed text:
+  "too much animation and lazy scrolling, bad color combination, no dark colors anywhere"
 
 ## Colour (closed)
-- `--paper` #F1F0EB  page (matches the logo background, so the mark sits on it with no box)
-- `--vellum` #E8E6DE  alternate section surface
-- `--ink` #1C2B22  text
-- `--ink-muted` #5A645D  secondary text
-- `--bench` #1E4A33  brand green (headings, footer, primary button)
-- `--bench-deep` #163826  primary button hover (darker, never lighter)
-- `--brass` #A88637  gold, used only for the eyebrow labels and thin rules
-- `--rule` rgba(28,43,34,.14)  hairlines
+charcoal #14171A (hero, header on scroll, footer) · white #FFFFFF (body) · mist #F5F5F3 (alt section, chips)
+ink #16191C · ink-muted #5F656B · gold #C9A24D (buttons, labels, hero accent words only) · rule #E4E4E0
+Green appears ONLY inside the logo.
 
 ## Type (closed, whole px)
-12 · 14 · 16 · 18 · 40 · 56 · 72  (72 hero desktop, 56 tablet, 40 phone and all section headings)
-- Display/headings: Cormorant Garamond 500/600
-- Body and UI: Inter 400/500/600
-- Eyebrow labels: 12px Inter 600 uppercase, letter-spacing .14em, brass
+12 · 14 · 16 · 18 · 24 · 40 · 64. Headings Manrope 600, body Inter 400/500/600.
 
-## Space
-4 · 8 · 12 · 16 · 24 · 32 · 48 · 64 · 96
+## Shape
+Buttons: pill, 48px (header 40px). Cards: 16px radius, 1px rule border, lift 4px + soft shadow on hover.
 
-## Controls
-- One button height: 48px (header Contact 40px).  Radius 2px on controls, 0 on surfaces.
-- Primary: bench fill, paper text. Secondary: text link with underline.
-
-## Depth
-Borders only. No shadows except the disclaimer dialog backdrop.
-
-## v2 (2026-10-20): modern redesign after "looks like 1990s"
-- Dark hero (one-hue green gradient, top lighter) + gold radial glow, full viewport, sticky header that blurs on scroll.
-- Logo: vector SVG traced from the JPEG (assets/mark.svg, mark-light.svg for dark backgrounds), 2000px PNGs alongside.
-- Practice areas: 2x2 bordered grid, card fills bench green on hover. Offices on night green.
-- Fade-up on scroll, off under prefers-reduced-motion.
+## Motion
+One fade-up (16px, 600ms) per block as it enters the screen. Native scroll. Off under reduced motion.
