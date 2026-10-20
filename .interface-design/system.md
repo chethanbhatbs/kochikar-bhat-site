@@ -14,7 +14,7 @@ Bar Council of India Rule 36: no solicitation. Copy states facts only (no "best"
 - `--rule` rgba(28,43,34,.14)  hairlines
 
 ## Type (closed, whole px)
-12 · 14 · 16 · 18 · 24 · 32 · 48
+12 · 14 · 16 · 18 · 40 · 56 · 72  (72 hero desktop, 56 tablet, 40 phone and all section headings)
 - Display/headings: Cormorant Garamond 500/600
 - Body and UI: Inter 400/500/600
 - Eyebrow labels: 12px Inter 600 uppercase, letter-spacing .14em, brass
@@ -23,8 +23,14 @@ Bar Council of India Rule 36: no solicitation. Copy states facts only (no "best"
 4 · 8 · 12 · 16 · 24 · 32 · 48 · 64 · 96
 
 ## Controls
-- One button height: 44px. Radius 2px on controls, 0 on surfaces.
+- One button height: 48px (header Contact 40px).  Radius 2px on controls, 0 on surfaces.
 - Primary: bench fill, paper text. Secondary: text link with underline.
 
 ## Depth
 Borders only. No shadows except the disclaimer dialog backdrop.
+
+## v2 (2026-10-20): modern redesign after "looks like 1990s"
+- Dark hero (one-hue green gradient, top lighter) + gold radial glow, full viewport, sticky header that blurs on scroll.
+- Logo: vector SVG traced from the JPEG (assets/mark.svg, mark-light.svg for dark backgrounds), 2000px PNGs alongside.
+- Practice areas: 2x2 bordered grid, card fills bench green on hover. Offices on night green.
+- Fade-up on scroll, off under prefers-reduced-motion.
