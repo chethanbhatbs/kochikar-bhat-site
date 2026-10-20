@@ -1,0 +1,340 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bhat and Kochikar Advocates</title>
+<meta name="description" content="Bhat and Kochikar Advocates. Offices in Bangalore, Mangalore and Kasaragod.">
+<link rel="icon" href="assets/mark.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #F1F0EB;
+    --vellum: #E8E6DE;
+    --ink: #1C2B22;
+    --ink-muted: #5A645D;
+    --bench: #1E4A33;
+    --bench-deep: #163826;
+    --brass: #A88637;
+    --rule: rgba(28, 43, 34, .14);
+    --serif: "Cormorant Garamond", Georgia, serif;
+    --sans: "Inter", system-ui, -apple-system, sans-serif;
+    --wrap: 1120px;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font: 400 16px/1.6 var(--sans);
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: inherit; }
+  h1, h2, h3 { font-family: var(--serif); font-weight: 600; color: var(--bench); margin: 0; line-height: 1.15; }
+  p { margin: 0; }
+  .wrap { max-width: var(--wrap); margin: 0 auto; padding: 0 24px; }
+  .eyebrow {
+    font: 600 12px/1.4 var(--sans);
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--brass);
+  }
+
+  /* header */
+  .top { border-bottom: 1px solid var(--rule); }
+  .top .wrap { display: flex; align-items: center; justify-content: space-between; height: 80px; }
+  .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+  .brand img { height: 52px; width: auto; }
+  .brand-name { font: 600 18px/1.1 var(--serif); color: var(--bench); letter-spacing: .04em; text-transform: uppercase; }
+  .brand-sub { display: block; font: 600 12px/1.4 var(--sans); letter-spacing: .14em; color: var(--brass); margin-top: 4px; }
+  .nav { display: flex; gap: 32px; }
+  .nav a { font: 500 14px/1 var(--sans); text-decoration: none; color: var(--ink-muted); }
+  .nav a:hover { color: var(--bench); }
+
+  /* hero */
+  .hero .wrap {
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
+    gap: 64px;
+    align-items: center;
+    padding-top: 96px;
+    padding-bottom: 96px;
+  }
+  .hero h1 { font-size: 48px; font-weight: 500; margin: 16px 0 24px; }
+  .hero h1 + p { font-size: 18px; color: var(--ink-muted); max-width: 520px; }
+  .hero-mark { justify-self: center; }
+  .hero-mark img { width: 260px; height: auto; display: block; }
+  .cities { display: flex; gap: 12px; margin-top: 32px; font: 500 14px/1 var(--sans); color: var(--ink); }
+  .cities span + span::before { content: "|"; color: var(--brass); margin-right: 12px; }
+  .btn {
+    display: inline-flex; align-items: center; height: 44px; padding: 0 24px;
+    background: var(--bench); color: var(--paper); border: 0; border-radius: 2px;
+    font: 500 14px/1 var(--sans); letter-spacing: .04em; text-decoration: none; cursor: pointer;
+  }
+  .btn:hover { background: var(--bench-deep); }
+  .btn:focus-visible, .nav a:focus-visible { outline: 2px solid var(--brass); outline-offset: 3px; }
+  .hero .btn { margin-top: 32px; }
+
+  /* sections */
+  section.block { padding: 96px 0; border-top: 1px solid var(--rule); }
+  section.alt { background: var(--vellum); }
+  .head { display: grid; grid-template-columns: 1fr 2fr; gap: 64px; margin-bottom: 48px; }
+  .head h2 { font-size: 32px; margin-top: 12px; }
+  .head p { color: var(--ink-muted); align-self: end; max-width: 560px; }
+
+  /* practice areas */
+  .areas { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--rule); }
+  .area {
+    display: grid; grid-template-columns: 64px 1fr 2fr; gap: 32px;
+    padding: 32px 0; border-bottom: 1px solid var(--rule);
+  }
+  .area .num { font: 500 24px/1.2 var(--serif); color: var(--brass); font-variant-numeric: tabular-nums; }
+  .area h3 { font-size: 24px; }
+  .area p { color: var(--ink-muted); }
+  .area ul { margin: 12px 0 0; padding: 0; list-style: none; font-size: 14px; color: var(--ink); }
+  .area li { padding: 4px 0; }
+  .area li::before { content: "\2014"; color: var(--brass); margin-right: 8px; }
+
+  /* offices */
+  .offices { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--rule); }
+  .office { padding: 32px 32px 32px 0; }
+  .office + .office { padding-left: 32px; border-left: 1px solid var(--rule); }
+  .office h3 { font-size: 32px; font-weight: 500; }
+  .office .state { font-size: 14px; color: var(--ink-muted); margin-top: 4px; }
+  .office dl { margin: 24px 0 0; font-size: 14px; }
+  .office dt { font: 600 12px/1.4 var(--sans); letter-spacing: .14em; text-transform: uppercase; color: var(--ink-muted); margin-top: 16px; }
+  .office dd { margin: 4px 0 0; }
+  .todo { color: var(--ink-muted); font-style: italic; }
+
+  /* footer */
+  footer { background: var(--bench); color: rgba(241, 240, 235, .78); padding: 64px 0 32px; font-size: 14px; }
+  footer .wrap { display: grid; grid-template-columns: 1fr 2fr; gap: 64px; }
+  footer .fname { font: 600 24px/1.2 var(--serif); color: var(--paper); letter-spacing: .04em; }
+  footer .eyebrow { margin-top: 8px; }
+  footer h3 { font: 600 12px/1.4 var(--sans); letter-spacing: .14em; text-transform: uppercase; color: var(--brass); margin-bottom: 12px; }
+  footer .legal { grid-column: 1 / -1; border-top: 1px solid rgba(241, 240, 235, .16); padding-top: 24px; font-size: 12px; display: flex; justify-content: space-between; gap: 16px; }
+  footer button.linkish { background: none; border: 0; padding: 0; color: inherit; font: inherit; text-decoration: underline; cursor: pointer; }
+
+  /* disclaimer dialog */
+  dialog {
+    max-width: 640px; width: calc(100% - 32px); border: 1px solid var(--rule); border-radius: 2px;
+    padding: 48px; background: var(--paper); color: var(--ink);
+  }
+  dialog::backdrop { background: rgba(22, 56, 38, .72); }
+  dialog h2 { font-size: 32px; margin: 12px 0 24px; }
+  dialog p { font-size: 14px; color: var(--ink-muted); margin-bottom: 12px; }
+  dialog .btn { margin-top: 12px; }
+
+  @media (max-width: 860px) {
+    .hero .wrap, .head, footer .wrap { grid-template-columns: 1fr; gap: 32px; }
+    .hero .wrap { padding-top: 64px; padding-bottom: 64px; }
+    .hero-mark { order: -1; justify-self: start; }
+    .hero-mark img { width: 140px; }
+    .hero h1 { font-size: 32px; }
+    .area { grid-template-columns: 48px 1fr; gap: 16px; }
+    .area > div:last-child { grid-column: 2; }
+    .offices { grid-template-columns: 1fr; }
+    .office, .office + .office { padding: 32px 0; border-left: 0; }
+    .office + .office { border-top: 1px solid var(--rule); }
+    section.block { padding: 64px 0; }
+  }
+  @media (max-width: 600px) {
+    .wrap { padding: 0 16px; }
+    .nav { gap: 16px; }
+    .nav a:not(:last-child) { display: none; }
+    .brand img { height: 44px; }
+    .brand-name { font-size: 16px; }
+    .cities { flex-wrap: wrap; }
+    dialog { padding: 32px 24px; }
+    dialog h2 { font-size: 24px; }
+    footer .legal { flex-direction: column; align-items: flex-start; }
+  }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#">
+      <img src="assets/mark.png" alt="">
+      <span class="brand-name">Bhat and Kochikar<span class="brand-sub">Advocates</span></span>
+    </a>
+    <nav class="nav" aria-label="Main">
+      <a href="#practice">Practice areas</a>
+      <a href="#offices">Offices</a>
+      <a href="#offices">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="wrap">
+      <div>
+        <p class="eyebrow">Advocates</p>
+        <h1>Disputes, arbitration, intellectual property and real estate.</h1>
+        <p>A law practice with offices in Karnataka and Kerala.</p>
+        <div class="cities"><span>Bangalore</span><span>Mangalore</span><span>Kasaragod</span></div>
+        <a class="btn" href="#offices">Contact an office</a>
+      </div>
+      <div class="hero-mark"><img src="assets/mark.png" alt="Bhat and Kochikar monogram"></div>
+    </div>
+  </section>
+
+  <section class="block alt" id="practice">
+    <div class="wrap">
+      <div class="head">
+        <div>
+          <p class="eyebrow">Practice areas</p>
+          <h2>What we do</h2>
+        </div>
+        <p>Four areas of practice, handled from each of our offices.</p>
+      </div>
+      <ol class="areas">
+        <li class="area">
+          <span class="num">01</span>
+          <h3>Dispute Resolution, Civil and Criminal</h3>
+          <div>
+            <p>Representation in civil and criminal proceedings, from the first notice through trial and appeal.</p>
+            <ul>
+              <li>Civil suits, recovery and injunctions</li>
+              <li>Criminal complaints, bail and trials</li>
+              <li>Appeals and revisions</li>
+            </ul>
+          </div>
+        </li>
+        <li class="area">
+          <span class="num">02</span>
+          <h3>Intellectual Property Rights</h3>
+          <div>
+            <p>Protection and enforcement of trademarks, copyright and designs.</p>
+            <ul>
+              <li>Search, filing and registration</li>
+              <li>Oppositions and rectifications</li>
+              <li>Infringement and passing off</li>
+            </ul>
+          </div>
+        </li>
+        <li class="area">
+          <span class="num">03</span>
+          <h3>Arbitration</h3>
+          <div>
+            <p>Domestic arbitration, and court proceedings that support or challenge it.</p>
+            <ul>
+              <li>Notices and appointment of arbitrators</li>
+              <li>Conduct of arbitral proceedings</li>
+              <li>Interim relief, enforcement and challenges to awards</li>
+            </ul>
+          </div>
+        </li>
+        <li class="area">
+          <span class="num">04</span>
+          <h3>Real Estate</h3>
+          <div>
+            <p>Property transactions and property disputes.</p>
+            <ul>
+              <li>Title verification and due diligence</li>
+              <li>Sale, lease and development agreements</li>
+              <li>Partition, possession and title disputes</li>
+            </ul>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="block" id="offices">
+    <div class="wrap">
+      <div class="head">
+        <div>
+          <p class="eyebrow">Offices</p>
+          <h2>Where to find us</h2>
+        </div>
+        <p>Three offices across Karnataka and Kerala.</p>
+      </div>
+      <div class="offices">
+        <article class="office">
+          <h3>Bangalore</h3>
+          <p class="state">Karnataka</p>
+          <dl>
+            <dt>Address</dt><dd class="todo">Address to be added</dd>
+            <dt>Phone</dt><dd class="todo">Phone to be added</dd>
+            <dt>Email</dt><dd class="todo">Email to be added</dd>
+          </dl>
+        </article>
+        <article class="office">
+          <h3>Mangalore</h3>
+          <p class="state">Karnataka</p>
+          <dl>
+            <dt>Address</dt><dd class="todo">Address to be added</dd>
+            <dt>Phone</dt><dd class="todo">Phone to be added</dd>
+            <dt>Email</dt><dd class="todo">Email to be added</dd>
+          </dl>
+        </article>
+        <article class="office">
+          <h3>Kasaragod</h3>
+          <p class="state">Kerala</p>
+          <dl>
+            <dt>Address</dt><dd class="todo">Address to be added</dd>
+            <dt>Phone</dt><dd class="todo">Phone to be added</dd>
+            <dt>Email</dt><dd class="todo">Email to be added</dd>
+          </dl>
+        </article>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div>
+      <p class="fname">Bhat and Kochikar</p>
+      <p class="eyebrow">Advocates</p>
+    </div>
+    <div>
+      <h3>Disclaimer</h3>
+      <p>The Bar Council of India does not permit advocates to solicit work or advertise. This website gives general information about the firm only. It is not legal advice and does not create an advocate-client relationship.</p>
+    </div>
+    <div class="legal">
+      <span>&copy; 2026 Bhat and Kochikar Advocates</span>
+      <button class="linkish" type="button" id="show-disclaimer">Read the full disclaimer</button>
+    </div>
+  </div>
+</footer>
+
+<dialog id="disclaimer" aria-labelledby="disclaimer-title">
+  <p class="eyebrow">Disclaimer</p>
+  <h2 id="disclaimer-title">Before you continue</h2>
+  <p>The Bar Council of India does not permit advocates to solicit work or advertise in any manner. By clicking "I agree", you confirm that:</p>
+  <p>You are seeking information about Bhat and Kochikar Advocates of your own accord, and there has been no advertisement, solicitation or inducement of any kind from the firm or its members.</p>
+  <p>The information on this website is for general information only. It is not legal advice, and using this website does not create an advocate-client relationship.</p>
+  <button class="btn" type="button" id="agree">I agree</button>
+</dialog>
+
+<script>
+  (function () {
+    var key = "bk-disclaimer-agreed";
+    var dlg = document.getElementById("disclaimer");
+    var agreed = false;
+    try { agreed = localStorage.getItem(key) === "1"; } catch (e) {}
+
+    // The notice must be acknowledged, so Escape does not dismiss it on first visit.
+    dlg.addEventListener("cancel", function (e) { if (!agreed) e.preventDefault(); });
+
+    document.getElementById("agree").addEventListener("click", function () {
+      agreed = true;
+      try { localStorage.setItem(key, "1"); } catch (e) {}
+      dlg.close();
+    });
+    document.getElementById("show-disclaimer").addEventListener("click", function () {
+      dlg.showModal();
+    });
+
+    if (!agreed) dlg.showModal();
+  })();
+</script>
+</body>
+</html>
