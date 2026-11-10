@@ -1,0 +1,49 @@
+<!doctype html><html lang="en" data-astryx-theme="neutral"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>S1 Tabs</title>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@astryxdesign/core@0.7.11/src/reset.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@astryxdesign/core@0.7.11/dist/astryx.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@astryxdesign/theme-neutral@0.7.11/dist/theme.css">
+<link rel="stylesheet" href="brand.css">
+<script type="importmap">{"imports":{"react":"https://esm.sh/react@19.2.0","react/jsx-runtime":"https://esm.sh/react@19.2.0/jsx-runtime","react-dom":"https://esm.sh/react-dom@19.2.0","react-dom/client":"https://esm.sh/react-dom@19.2.0/client","htm":"https://esm.sh/htm@3.1.1"}}</script>
+<style>
+.hero1 .wrap { display: grid; grid-template-columns: 1.4fr 1fr; gap: 48px; align-items: center; padding-top: 72px; padding-bottom: 64px; }
+.hero1 .mark img { width: 220px; display: block; margin: 0 auto; }
+.panel { padding-top: 48px; padding-bottom: 96px; }
+.tabbar { position: sticky; top: 72px; z-index: 5; background: var(--color-background-body); }
+.acc-title { padding: 12px 0; display: flex; gap: 20px; align-items: baseline; font: 600 22px/1.3 var(--font-family-heading); }
+.acc-title .n { font-size: 14px; color: var(--color-text-secondary); font-variant-numeric: tabular-nums; }
+.acc-body { padding: 0 0 24px 37px; color: var(--color-text-secondary); }
+.office-pick { margin: 0 0 32px; }
+.office-card { display: grid; grid-template-columns: 1fr 2fr; gap: 48px; align-items: start; }
+.office-card h3 { font: 600 32px/1.15 var(--font-family-heading); margin: 0; }
+@media (max-width: 900px) { .hero1 .wrap, .office-card { grid-template-columns: 1fr; gap: 24px; } .hero1 .mark { display: none; } .acc-body { padding-left: 0; } }
+</style></head><body><div id="root"></div>
+<script type="module">
+import {C, html, React, SITE, TODO, Header, Footer, Arrow, mount} from './shell.js';
+function App() {
+  const [tab, setTab] = React.useState('practice');
+  const [office, setOffice] = React.useState('bangalore');
+  const o = SITE.offices.find(x => x.id === office);
+  const go = t => { setTab(t); document.getElementById('tabs').scrollIntoView({behavior: 'smooth'}); };
+  return html`<${Header} links=${[]}/>
+  <section data-astryx-media="dark" class="dark-band hero1"><div class="wrap"><div>
+    <p class="label">${SITE.cities}</p><h1 class="hero-title">${SITE.h1a}<span>${SITE.h1b}</span></h1><p class="lead">${SITE.lead}</p>
+    <div style=${{display:'flex',gap:12,flexWrap:'wrap',marginTop:32}}><${C.Button} variant="primary" size="lg" label="Our practice" endContent=${html`<${Arrow}/>`} onClick=${() => go('practice')}/><${C.Button} variant="secondary" size="lg" label="Find an office" onClick=${() => go('offices')}/></div>
+  </div><div class="mark"><img src="assets/mark-light.svg" alt="Bhat &amp; Kochikar monogram"/></div></div></section>
+  <div class="tabbar" id="tabs"><div class="wrap"><${C.TabList} value=${tab} onChange=${setTab} hasDivider size="lg" role="tablist">
+    <${C.Tab} value="practice" label="Practice areas" panelId="p-practice"/><${C.Tab} value="offices" label="Offices" panelId="p-offices"/></${C.TabList}></div></div>
+  <main class="wrap panel">
+    ${tab === 'practice' ? html`<div id="p-practice" role="tabpanel"><${C.CollapsibleGroup} defaultValue=${['disputes']} isMultiple>
+      ${SITE.practice.map(p => html`<div key=${p.id}><${C.Collapsible} value=${p.id} trigger=${html`<span class="acc-title"><span class="n">${p.n}</span>${p.t}</span>`}>
+        <div class="acc-body"><p style=${{margin:0}}>${p.d}</p><ul class="chips">${p.tags.map(t => html`<li key=${t}>${t}</li>`)}</ul></div>
+      </${C.Collapsible}><${C.Divider}/></div>`)}
+    </${C.CollapsibleGroup}></div>` : html`<div id="p-offices" role="tabpanel">
+      <div class="office-pick"><${C.SegmentedControl} value=${office} onChange=${setOffice} label="Office" size="lg">${SITE.offices.map(x => html`<${C.SegmentedControlItem} key=${x.id} value=${x.id} label=${x.city}/>`)}</${C.SegmentedControl}></div>
+      <div class="office-card"><div><p class="label">${o.state}</p><h3>${o.city}</h3></div>
+        <${C.MetadataList} columns="single"><${C.MetadataListItem} label="Address">${TODO}</${C.MetadataListItem}><${C.MetadataListItem} label="Phone">${TODO}</${C.MetadataListItem}><${C.MetadataListItem} label="Email">${TODO}</${C.MetadataListItem}></${C.MetadataList}></div>
+    </div>`}
+  </main><${Footer}/>`;
+}
+mount(App);
+</script></body></html>
