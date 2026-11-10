@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Site templates & themes</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--page:#E9E5DD;--surface:#fff;--line:#d9d2c5;--text:#211D18;--dim:#6E655A}
+*{box-sizing:border-box}
+body{margin:0;background:var(--page);font:14px/1.45 Inter,system-ui,sans-serif;color:var(--text)}
+.bar{position:sticky;top:0;z-index:5;min-height:56px;display:flex;align-items:center;gap:16px;padding:8px 20px;border-bottom:1px solid var(--line);background:#F3EFE8;flex-wrap:wrap}
+.bar h1{font-size:16px;font-weight:600;margin:0}.bar .sub{font-size:13px;color:var(--dim)}.sp{flex:1}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:6px;overflow:hidden;background:var(--surface)}
+.seg button{height:32px;padding:0 14px;border:0;border-right:1px solid var(--line);background:none;font:500 13px Inter;color:var(--dim);cursor:pointer}
+.seg button:last-child{border-right:0}.seg button[aria-pressed=true]{background:var(--text);color:#fff}
+.layout{display:grid;grid-template-columns:1fr 320px;gap:20px;padding:20px;align-items:start}
+.stage{min-width:0}
+.tpl{display:grid;grid-template-columns:repeat(6,1fr);gap:8px;margin-bottom:14px}
+.tpl button{text-align:left;border:1px solid var(--line);background:var(--surface);border-radius:8px;padding:10px 12px;cursor:pointer;font:inherit;color:inherit}
+.tpl button b{display:block;font-size:14px}.tpl button span{display:block;font-size:12px;color:var(--dim);margin-top:2px}
+.tpl button[aria-pressed=true]{background:var(--text);color:#fff;border-color:var(--text)}.tpl button[aria-pressed=true] span{color:#d8d2c6}
+.dev{border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--surface);margin:0 auto}
+.chrome{height:30px;display:flex;align-items:center;gap:7px;padding:0 12px;background:#EFEBE3;border-bottom:1px solid #E6E0D5;font:500 11px ui-monospace,Menlo,monospace;color:#9C9284}
+.chrome i{width:9px;height:9px;border-radius:5px;background:#d8d1c4}
+.dev iframe{border:0;display:block;width:100%;background:#fff}
+body.phone .dev{width:392px;border-radius:28px}body.phone .chrome i{display:none}
+.grid4{display:none;grid-template-columns:1fr 1fr;gap:14px}
+.grid4 .cell h3{font-size:13px;margin:0 0 6px;display:flex;justify-content:space-between;align-items:center;gap:8px}.grid4 .cell h3 button{height:26px;padding:0 10px;border:1px solid var(--line);border-radius:6px;background:#fff;font:500 12px Inter;cursor:pointer}.grid4 .cell h3 button:hover{background:var(--text);color:#fff}
+.grid4 .box{margin:0 auto;overflow:hidden;border:1px solid var(--line);border-radius:8px;background:#fff;position:relative}
+.grid4 iframe{border:0;width:1280px;height:1100px;transform-origin:0 0;position:absolute;left:0;top:0}
+body.all .grid4,body.themes .grid4{display:grid}body.all .single,body.themes .single{display:none}
+aside{position:sticky;top:76px;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:16px}
+aside h2{font-size:14px;margin:0 0 10px}
+.presets{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:16px}
+.presets button{display:flex;align-items:center;gap:10px;border:1px solid var(--line);background:none;border-radius:8px;padding:8px 10px;cursor:pointer;text-align:left;font:inherit;color:inherit}
+.presets button[title]{}.presets button[aria-pressed=true]{border-color:var(--text);box-shadow:inset 0 0 0 1px var(--text)}
+.sw{display:flex;flex:none}.sw i{display:block;width:16px;height:28px}.sw i:first-child{border-radius:4px 0 0 4px}.sw i:last-child{border-radius:0 4px 4px 0}
+.presets b{display:block;font-size:12px;line-height:1.25}.presets span span{display:none}.presets button{padding:6px 8px;gap:8px}.sw i{width:10px;height:24px}
+details{border-top:1px solid var(--line);padding-top:12px}
+summary{cursor:pointer;font-weight:600;font-size:13px}
+.f{display:grid;grid-template-columns:1fr auto;align-items:center;gap:8px;margin-top:10px;font-size:13px}
+.f input[type=color]{width:44px;height:28px;border:1px solid var(--line);border-radius:6px;padding:2px;background:#fff;cursor:pointer}
+.f select{height:30px;border:1px solid var(--line);border-radius:6px;font:inherit;background:#fff}
+.f input[type=range]{width:120px}
+.acts{display:flex;gap:8px;margin-top:14px}
+.acts button{flex:1;height:32px;border:1px solid var(--line);border-radius:6px;background:#fff;font:500 13px Inter;cursor:pointer}
+.acts button.pri{background:var(--text);color:#fff;border-color:var(--text)}
+.toast{font-size:12px;color:var(--dim);min-height:16px;margin-top:6px}
+@media (max-width:1300px){.tpl{grid-template-columns:repeat(4,1fr)}}@media (max-width:1000px){.layout{grid-template-columns:1fr}aside{position:static}.tpl{grid-template-columns:1fr 1fr}.grid4{grid-template-columns:1fr}}
+@media (max-width:600px){.bar .sub{display:none}body.phone .dev{width:100%}}
+</style></head><body>
+<div class="bar"><h1>Bhat &amp; Kochikar: templates & themes</h1><span class="sub">All 18 layouts from rounds 1, 2 & 3 & all 12 themes in one page. Scroll inside any preview.</span><span class="sp"></span><span class="sub">Earlier rounds: <a href="../v2/" target="_blank">round 2</a> · <a href="../index.html" target="_blank">round 1</a></span>
+  <div class="seg" id="viewSeg"><button aria-pressed="true" data-v="one">One at a time</button><button aria-pressed="false" data-v="all">All 18 templates</button><button aria-pressed="false" data-v="themes">All 12 themes</button></div>
+  <div class="seg" id="devSeg"><button aria-pressed="true" data-v="laptop">Laptop</button><button aria-pressed="false" data-v="phone">Phone</button></div>
+</div>
+<div class="layout">
+  <div class="stage">
+    <div class="single"><div class="tpl" id="tpl"></div>
+      <div class="dev"><div class="chrome"><i></i><i></i><i></i><span id="url"></span></div><iframe id="frame" title="Site preview"></iframe></div></div>
+    <div class="grid4" id="grid4"></div>
+  </div>
+  <aside>
+    <h2>Theme</h2>
+    <div class="presets" id="presets"></div>
+    <details id="custom"><summary>Customise this theme</summary>
+      <div id="fields"></div>
+      <div class="acts"><button type="button" id="reset">Reset</button><button type="button" class="pri" id="copy">Copy theme</button></div>
+      <div class="toast" id="toast" role="status"></div>
+    </details>
+  </aside>
+</div>
+<script type="module">
+import {PRESETS, TEMPLATES, FONTS, MOTION, themeVars} from './themes.js';
+const st = {t: 'a', p: 'logo', o: {}, dev: 'laptop', view: 'one'};
+try { Object.assign(st, JSON.parse(localStorage.getItem('kb_mock3') || '{}')); } catch {}
+if (!TEMPLATES[st.t]) st.t = 'a'; if (!PRESETS[st.p]) st.p = 'logo';
+const save = () => { try { localStorage.setItem('kb_mock3', JSON.stringify(st)); } catch {} };
+const hash = (t, p) => `#t=${t}&p=${p || st.p}&o=${encodeURIComponent(JSON.stringify(p ? {} : st.o))}`;
+const srcOf = t => (TEMPLATES[t].src || 'site.html');
+const point = (f, t, p) => { const want = new URL(srcOf(t), location.href).href.split('#')[0]; if (f.src.split('#')[0] !== want) f.src = srcOf(t) + hash(t, p); else f.contentWindow.location.hash = hash(t, p).slice(1); };
+const frame = document.getElementById('frame');
+const FIELDS = [['bg','Page background'],['surface','Card background'],['ink','Text'],['muted','Soft text'],['brand','Brand band (logo green)'],['onBrand','Text on brand band'],['accent','Accent (logo gold)'],['logoInk','Logo letters']];
+
+function sizeFrame() { frame.style.height = (st.dev === 'phone' ? 780 : Math.max(640, innerHeight - 190)) + 'px'; }
+function apply() {
+  document.body.classList.toggle('phone', st.dev === 'phone'); document.body.classList.toggle('all', st.view === 'all'); document.body.classList.toggle('themes', st.view === 'themes');
+  document.querySelectorAll('#devSeg button').forEach(b => b.setAttribute('aria-pressed', b.dataset.v === st.dev));
+  document.querySelectorAll('#viewSeg button').forEach(b => b.setAttribute('aria-pressed', b.dataset.v === st.view));
+  document.querySelectorAll('#tpl button').forEach(b => b.setAttribute('aria-pressed', b.dataset.t === st.t));
+  document.querySelectorAll('#presets button').forEach(b => b.setAttribute('aria-pressed', b.dataset.p === st.p));
+  point(frame, st.t);
+  document.getElementById('url').textContent = TEMPLATES[st.t].name + ' · ' + PRESETS[st.p].name + (Object.keys(st.o).length ? ' (customised)' : '');
+  if (st.view === 'all' || st.view === 'themes') renderGrid();
+  fillFields(); sizeFrame(); save();
+}
+function renderGrid() {
+  const g = document.getElementById('grid4');
+  const mode = st.view + ':' + (st.view === 'themes' ? st.t : '');
+  if (g.dataset.mode !== mode) { g.dataset.mode = mode; g.innerHTML = st.view === 'themes'
+    ? Object.entries(PRESETS).map(([p, th]) => `<div class="cell" data-p="${p}"><h3>${th.name}<button type="button" data-go>Open full size</button></h3><div class="box"><iframe data-k="${st.t}" data-p="${p}" title="${th.name}" tabindex="-1"></iframe></div></div>`).join('')
+    : Object.entries(TEMPLATES).map(([k, t]) => `<div class="cell"><h3>${t.name}<button type="button" data-go>Open full size</button></h3><div class="box"><iframe data-k="${k}" title="${t.name}" tabindex="-1"></iframe></div></div>`).join(''); }
+  g.querySelectorAll('iframe').forEach(f => {
+    const w = st.dev === 'phone' ? 390 : 1280, ih = st.dev === 'phone' ? 780 : 800; f.style.width = w + 'px';
+    const box = f.parentElement; const s = Math.min(box.parentElement.clientWidth / w, st.dev === 'phone' ? 0.8 : 1); box.style.width = (w * s) + 'px'; box.style.height = (ih * s) + 'px'; f.style.transform = `scale(${s})`; f.style.height = ih + 'px';
+    point(f, f.dataset.k, f.dataset.p);
+  });
+}
+function fillFields() {
+  const th = {...PRESETS[st.p], ...st.o};
+  document.getElementById('fields').innerHTML = FIELDS.map(([k, l]) => `<label class="f">${l}<input type="color" data-k="${k}" value="${th[k]}"></label>`).join('')
+    + `<label class="f">Fonts<select data-k="font">${Object.entries(FONTS).map(([k, f]) => `<option value="${k}" ${th.font === k ? 'selected' : ''}>${f.label}</option>`).join('')}</select></label>`
+    + `<label class="f">Motion<select data-k="motion">${Object.entries(MOTION).map(([k, m]) => `<option value="${k}" ${(th.motion || 'calm') === k ? 'selected' : ''}>${m.label}</option>`).join('')}</select></label>`
+    + `<label class="f">Corner rounding <input type="range" min="0" max="28" step="2" data-k="radius" value="${th.radius}"></label>`;
+}
+document.getElementById('tpl').innerHTML = Object.entries(TEMPLATES).map(([k, t]) => `<button type="button" data-t="${k}"><b>${t.name}</b><span>${t.note}</span></button>`).join('');
+document.getElementById('presets').innerHTML = Object.entries(PRESETS).map(([k, p]) => `<button type="button" data-p="${k}" title="${p.note}"><span class="sw"><i style="background:${p.bg}"></i><i style="background:${p.brand}"></i><i style="background:${p.accent}"></i></span><span><b>${p.name}</b><span>${p.note}</span></span></button>`).join('');
+document.getElementById('tpl').addEventListener('click', e => { const b = e.target.closest('button'); if (b) { st.t = b.dataset.t; apply(); } });
+document.getElementById('presets').addEventListener('click', e => { const b = e.target.closest('button'); if (b) { st.p = b.dataset.p; st.o = {}; apply(); } });
+document.getElementById('devSeg').addEventListener('click', e => { const b = e.target.closest('button'); if (b) { st.dev = b.dataset.v; apply(); } });
+document.getElementById('viewSeg').addEventListener('click', e => { const b = e.target.closest('button'); if (b) { st.view = b.dataset.v; apply(); } });
+document.getElementById('fields').addEventListener('input', e => { const k = e.target.dataset.k; if (!k) return; st.o[k] = k === 'radius' ? +e.target.value : e.target.value; const s = hash(st.t).slice(1); frame.contentWindow.location.hash = s; document.querySelectorAll('#grid4 iframe').forEach(f => f.contentWindow.location.hash = hash(f.dataset.k).slice(1)); document.getElementById('url').textContent = TEMPLATES[st.t].name + ' · ' + PRESETS[st.p].name + ' (customised)'; save(); });
+// Scrolling over a preview scrolls that preview (until it reaches its top or bottom).
+document.getElementById('grid4').addEventListener('wheel', e => {
+  const box = e.target.closest('.box'); if (!box) return; const f = box.querySelector('iframe'); let w; try { w = f.contentWindow; w.document; } catch { return; }
+  const el = w.document.scrollingElement, max = el.scrollHeight - w.innerHeight, s = (f.getBoundingClientRect().width / f.offsetWidth) || 1;
+  if ((e.deltaY > 0 && el.scrollTop < max - 1) || (e.deltaY < 0 && el.scrollTop > 0)) { e.preventDefault(); w.scrollBy(0, e.deltaY / s); }
+}, {passive: false});
+document.getElementById('grid4').addEventListener('click', e => { if (!e.target.closest('[data-go]')) return; const c = e.target.closest('.cell'); if (!c) return; const f = c.querySelector('iframe'); st.t = f.dataset.k; if (f.dataset.p) { st.p = f.dataset.p; st.o = {}; } st.view = 'one'; apply(); });
+document.getElementById('reset').addEventListener('click', () => { st.o = {}; apply(); });
+document.getElementById('copy').addEventListener('click', async () => {
+  const css = ':root {\n' + Object.entries(themeVars({...PRESETS[st.p], ...st.o})).map(([k, v]) => `  ${k}: ${v};`).join('\n') + '\n}';
+  try { await navigator.clipboard.writeText(css); document.getElementById('toast').textContent = 'Theme copied as CSS.'; } catch { document.getElementById('toast').textContent = 'Copy blocked by the browser.'; }
+});
+let rt; addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(() => { sizeFrame(); if (st.view === 'all') renderGrid(); }, 150); });
+apply();
+</script>
+</body></html>

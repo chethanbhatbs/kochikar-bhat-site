@@ -1,0 +1,589 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bhat &amp; Kochikar Advocates</title>
+<link rel="icon" href="assets/mark.svg" type="image/svg+xml">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Cinzel:wght@500;600&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Manrope:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ---------- shared ---------- */
+:root { --ease: cubic-bezier(.23,1,.32,1); --wrap: 1200px; }
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 88px; }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 400 16px/1.6 var(--body); -webkit-font-smoothing: antialiased; transition: background-color .4s var(--ease), color .4s var(--ease); }
+h1, h2, h3 { font-family: var(--head); font-weight: var(--head-w); margin: 0; line-height: 1.05; letter-spacing: -.01em; }
+p { margin: 0; }
+a { color: inherit; }
+.wrap { max-width: var(--wrap); margin: 0 auto; padding: 0 32px; }
+.eyebrow { font: 600 12px/1.4 var(--body); letter-spacing: .18em; text-transform: uppercase; color: var(--accent); }
+.muted { color: var(--muted); }
+.logo svg { display: block; width: 100%; height: auto; }
+.logo .green path { fill: var(--logo-ink); transition: fill .4s var(--ease); }
+.btn { white-space: nowrap; display: inline-flex; align-items: center; gap: 10px; height: 48px; padding: 0 24px; border-radius: min(var(--r), 999px); font: 600 14px/1 var(--body); letter-spacing: .02em; text-decoration: none; cursor: pointer; border: 1px solid transparent; transition: background-color .25s var(--ease), color .25s var(--ease), border-color .25s var(--ease), transform .25s var(--ease); }
+.btn svg { width: 16px; height: 16px; transition: transform .25s var(--ease); }
+.btn:hover svg { transform: translateX(4px); }
+.btn-accent { background: var(--accent); color: var(--on-accent); }
+.btn-accent:hover { filter: brightness(.92); }
+.btn-line { border-color: color-mix(in srgb, currentColor 35%, transparent); color: inherit; background: transparent; }
+.btn-line:hover { border-color: currentColor; }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; margin: 0; padding: 0; list-style: none; }
+.chips li { font-size: 13px; padding: 5px 12px; border: 1px solid var(--line); border-radius: 999px; color: var(--muted); }
+.todo { font-style: italic; color: var(--muted); }
+
+/* top bar, shared shape */
+.bar { position: sticky; top: 0; z-index: 20; backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); background: color-mix(in srgb, var(--bg) 78%, transparent); border-bottom: 1px solid color-mix(in srgb, var(--line) 70%, transparent); }
+.bar .wrap { height: 76px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+.brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+.brand .logo { width: 34px; }
+.brand b { font: 600 15px/1.1 var(--head); letter-spacing: .06em; text-transform: uppercase; display: block; }
+.brand small { display: block; font: 600 11px/1.4 var(--body); letter-spacing: .24em; color: var(--accent); margin-top: 3px; text-transform: uppercase; }
+.nav { display: flex; align-items: center; gap: 28px; }
+.nav a.l { font-size: 14px; text-decoration: none; color: var(--muted); transition: color .2s; }
+.nav a.l:hover { color: var(--ink); }
+.nav .btn { height: 40px; padding: 0 18px; }
+
+/* footer, shared */
+.foot { background: var(--brand); color: color-mix(in srgb, var(--on-brand) 70%, transparent); }
+.foot .wrap { padding-top: 72px; padding-bottom: 32px; }
+.foot .big { font: var(--head-w) clamp(48px, 11vw, 168px)/0.9 var(--head); color: var(--on-brand); letter-spacing: -.02em; }
+.foot .big span { color: var(--accent); }
+.foot .row { display: flex; justify-content: space-between; gap: 16px; margin-top: 48px; padding-top: 24px; border-top: 1px solid color-mix(in srgb, var(--on-brand) 18%, transparent); font-size: 13px; }
+.foot button { background: none; border: 0; padding: 0; color: inherit; font: inherit; text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
+
+/* reveal on scroll */
+.rv { opacity: 0; transform: translateY(24px); transition: opacity .8s var(--ease), transform .8s var(--ease); }
+.rv.in { opacity: 1; transform: none; }
+
+/* disclaimer */
+dialog { max-width: 600px; width: calc(100% - 32px); border: 1px solid var(--line); border-radius: min(var(--r), 20px); padding: 44px; background: var(--surface); color: var(--ink); }
+dialog::backdrop { background: rgba(10,14,12,.7); backdrop-filter: blur(4px); }
+dialog h2 { font-size: 30px; margin: 10px 0 18px; }
+dialog p { font-size: 14px; color: var(--muted); margin-bottom: 12px; }
+
+/* ---------- T1 editorial ---------- */
+.t1 .hero { padding: 72px 0 0; position: relative; overflow: hidden; }
+.t1 .hero .wm { position: absolute; right: -60px; top: 20px; width: 520px; opacity: .08; pointer-events: none; }
+.t1 .hero h1 { font-size: clamp(52px, 8.6vw, 132px); line-height: .95; letter-spacing: -.025em; margin: 28px 0 40px; max-width: 12ch; }
+.t1 .hero h1 em { font-style: italic; color: var(--accent); }
+.t1 .hero .under { display: grid; grid-template-columns: 1fr auto; gap: 32px; align-items: end; padding-bottom: 56px; border-bottom: 1px solid var(--line); }
+.t1 .hero .under p { font-size: 19px; max-width: 520px; color: var(--muted); }
+.t1 .ribbon { overflow: hidden; border-bottom: 1px solid var(--line); background: var(--brand); color: var(--on-brand); }
+.t1 .ribbon .track { display: flex; gap: 56px; width: max-content; padding: 22px 0; animation: slide calc(38s * var(--spd)) linear infinite; font: var(--head-w) 30px/1 var(--head); white-space: nowrap; }
+.t1 .ribbon .track span::after { content: "✦"; color: var(--accent); margin-left: 56px; font-size: 18px; vertical-align: middle; }
+@keyframes slide { to { transform: translateX(-50%); } }
+.t1 .sec { padding: 112px 0; }
+.t1 .sec-h { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-bottom: 56px; align-items: end; }
+.t1 .sec-h h2 { font-size: clamp(40px, 5vw, 72px); }
+.t1 .rows { border-top: 1px solid var(--ink); }
+.t1 .prow { display: grid; grid-template-columns: 80px 1fr 48px; gap: 24px; align-items: start; padding: 30px 0; border-bottom: 1px solid var(--line); cursor: pointer; transition: padding .4s var(--ease), background-color .4s var(--ease); }
+.t1 .prow .n { font: 500 15px/2.6 var(--body); color: var(--muted); font-variant-numeric: tabular-nums; }
+.t1 .prow h3 { font-size: clamp(28px, 3.6vw, 48px); transition: color .3s, transform .4s var(--ease); }
+.t1 .prow .more { display: grid; grid-template-rows: 0fr; transition: grid-template-rows .5s var(--ease); }
+.t1 .prow .more > div { overflow: hidden; }
+.t1 .prow .more p { margin: 16px 0 16px; color: var(--muted); max-width: 560px; }
+.t1 .prow .ar { width: 48px; height: 48px; border-radius: 50%; border: 1px solid var(--line); display: grid; place-items: center; margin-top: 4px; transition: transform .4s var(--ease), background-color .3s, border-color .3s; }
+.t1 .prow .ar svg { width: 16px; }
+.t1 .prow:hover h3, .t1 .prow.open h3 { color: var(--accent); transform: translateX(8px); }
+.t1 .prow:hover .ar, .t1 .prow.open .ar { background: var(--accent); border-color: var(--accent); color: #14171A; transform: rotate(45deg); }
+.t1 .prow.open .more { grid-template-rows: 1fr; }
+.t1 .offices { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--ink); }
+.t1 .office { padding: 36px 32px 40px 0; border-right: 1px solid var(--line); }
+.t1 .office + .office { padding-left: 32px; }
+.t1 .office:last-child { border-right: 0; }
+.t1 .office h3 { font-size: clamp(36px, 4vw, 56px); margin: 10px 0 28px; }
+.t1 .office dl { margin: 0; font-size: 14px; }
+.t1 .office dt { color: var(--muted); font-size: 12px; letter-spacing: .14em; text-transform: uppercase; margin-top: 14px; }
+.t1 .office dd { margin: 2px 0 0; }
+
+/* ---------- T2 bento ---------- */
+.t2 .bento { display: grid; grid-template-columns: repeat(12, 1fr); grid-auto-rows: minmax(150px, auto); gap: 14px; padding: 28px 0 96px; }
+.t2 .tile { position: relative; overflow: hidden; background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); padding: 28px; isolation: isolate; }
+.t2 .tile::before { content: ""; position: absolute; inset: 0; z-index: -1; opacity: 0; transition: opacity .3s; background: radial-gradient(420px circle at var(--mx, 50%) var(--my, 50%), color-mix(in srgb, var(--accent) 22%, transparent), transparent 60%); }
+.t2 .tile:hover::before { opacity: 1; }
+.t2 .tile.hero { grid-column: span 8; grid-row: span 3; background: var(--brand); color: var(--on-brand); border-color: transparent; display: flex; flex-direction: column; justify-content: space-between; padding: 44px; }
+.t2 .tile.hero h1 { font-size: clamp(42px, 5.4vw, 80px); line-height: 1; letter-spacing: -.02em; max-width: 13ch; }
+.t2 .tile.hero h1 span { color: var(--accent); }
+.t2 .tile.hero p { color: color-mix(in srgb, var(--on-brand) 72%, transparent); font-size: 17px; max-width: 460px; margin: 20px 0 28px; }
+.t2 .tile.logo { grid-column: span 4; grid-row: span 2; display: grid; place-items: center; background: radial-gradient(circle at 50% 40%, color-mix(in srgb, var(--accent) 22%, var(--surface)), var(--surface) 70%); }
+.t2 .tile.logo .logo { width: 150px; transition: transform .8s var(--ease); }
+.t2 .tile.logo:hover .logo { transform: scale(1.06) rotate(-2deg); }
+.t2 .tile.stat { grid-column: span 2; display: flex; flex-direction: column; justify-content: space-between; }
+.t2 .tile.stat b { font: var(--head-w) 56px/1 var(--head); color: var(--accent); font-variant-numeric: tabular-nums; }
+.t2 .tile.stat span { font-size: 13px; color: var(--muted); }
+.t2 .tile.pa { grid-column: span 3; display: flex; flex-direction: column; cursor: pointer; transition: transform .35s var(--ease), border-color .3s; }
+.t2 .tile.pa:hover { transform: translateY(-4px); border-color: color-mix(in srgb, var(--accent) 60%, var(--line)); }
+.t2 .tile.pa .n { font-size: 13px; color: var(--muted); display: flex; justify-content: space-between; }
+.t2 .tile.pa h3 { font-size: 24px; line-height: 1.15; margin: 36px 0 10px; }
+.t2 .tile.pa p { font-size: 14px; color: var(--muted); }
+.t2 .tile.pa .chips { margin-top: auto; padding-top: 18px; }
+.t2 .tile.off { grid-column: span 12; display: grid; grid-template-columns: 220px repeat(3, 1fr); gap: 0; padding: 0; }
+.t2 .tile.off > div { padding: 28px; border-left: 1px solid var(--line); }
+.t2 .tile.off > div:first-child { border-left: 0; }
+.t2 .tile.off h2 { font-size: 30px; margin-top: 8px; }
+.t2 .tile.off h3 { font-size: 26px; }
+.t2 .tile.off .st { font-size: 13px; color: var(--muted); margin: 2px 0 14px; }
+.t2 .tile.off dl { margin: 0; font-size: 13px; } .t2 .tile.off dt { color: var(--muted); margin-top: 6px; } .t2 .tile.off dd { margin: 0; }
+.t2 .tile.cta { grid-column: span 12; display: flex; justify-content: space-between; align-items: center; gap: 24px; background: var(--accent); color: #14171A; border-color: transparent; }
+.t2 .tile.cta h2 { font-size: clamp(28px, 3.4vw, 44px); }
+.t2 .tile.cta .btn { background: #14171A; color: #fff; }
+
+/* ---------- T3 split sticky ---------- */
+.t3 .split { display: grid; grid-template-columns: 44% 56%; }
+.t3 .left { position: sticky; top: 0; height: 100vh; background: var(--brand); color: var(--on-brand); padding: 40px 56px; display: flex; flex-direction: column; overflow: hidden; }
+.t3 .left .brand small { color: var(--accent); }
+.t3 .left .logo { width: 128px; margin: auto 0 32px; }
+.t3 .left .logo .green path { fill: var(--on-brand); }
+.t3 .left h1 { font-size: clamp(38px, 4.2vw, 64px); line-height: 1.02; letter-spacing: -.02em; }
+.t3 .left h1 span { color: var(--accent); }
+.t3 .left p { color: color-mix(in srgb, var(--on-brand) 72%, transparent); margin: 20px 0 0; max-width: 420px; }
+.t3 .rail { display: flex; flex-direction: column; gap: 10px; margin-top: auto; padding-top: 32px; }
+.t3 .rail a { display: flex; align-items: center; gap: 14px; text-decoration: none; font-size: 13px; color: color-mix(in srgb, var(--on-brand) 55%, transparent); transition: color .3s; }
+.t3 .rail a i { width: 24px; height: 1px; background: currentColor; transition: width .4s var(--ease); }
+.t3 .rail a.on { color: var(--on-brand); } .t3 .rail a.on i { width: 56px; background: var(--accent); }
+.t3 .left .glow { position: absolute; width: 520px; height: 520px; right: -220px; top: -160px; border-radius: 50%; background: radial-gradient(circle, color-mix(in srgb, var(--accent) 35%, transparent), transparent 65%); filter: blur(10px); animation: drift calc(14s * var(--spd)) ease-in-out infinite alternate; pointer-events: none; }
+@keyframes drift { to { transform: translate(-80px, 120px); } }
+.t3 .right { padding: 0 64px; }
+.t3 .right .top { height: 88px; display: flex; justify-content: flex-end; align-items: center; gap: 24px; position: sticky; top: 0; z-index: 5; background: color-mix(in srgb, var(--bg) 85%, transparent); backdrop-filter: blur(12px); }
+.t3 .pa { min-height: 78vh; display: flex; flex-direction: column; justify-content: center; border-bottom: 1px solid var(--line); padding: 64px 0; }
+.t3 .pa .n { font: var(--head-w) 120px/1 var(--head); color: transparent; -webkit-text-stroke: 1px color-mix(in srgb, var(--accent) 80%, transparent); }
+.t3 .pa h2 { font-size: clamp(34px, 3.6vw, 54px); margin: 8px 0 18px; }
+.t3 .pa p { font-size: 18px; color: var(--muted); max-width: 520px; margin-bottom: 24px; }
+.t3 .offices { padding: 96px 0; }
+.t3 .offices h2 { font-size: clamp(34px, 3.6vw, 54px); margin: 8px 0 32px; }
+.t3 .orow { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; padding: 22px 0; border-top: 1px solid var(--line); align-items: baseline; transition: padding .3s var(--ease); }
+.t3 .orow:hover { padding-left: 12px; }
+.t3 .orow h3 { font-size: 30px; } .t3 .orow .st { color: var(--muted); font-size: 14px; }
+.t3 .orow .c { font-size: 14px; } .t3 .orow dl { margin: 0; } .t3 .orow dt { color: var(--muted); font-size: 12px; letter-spacing: .14em; text-transform: uppercase; margin-top: 10px; } .t3 .orow dt:first-child { margin-top: 0; } .t3 .orow dd { margin: 2px 0 0; }
+
+/* ---------- T4 spotlight ---------- */
+.t4 .stage { position: relative; overflow: hidden; text-align: center; padding: 96px 0 120px; background: var(--brand); color: var(--on-brand); }
+.t4 .stage::before { content: ""; position: absolute; inset: -40%; background: conic-gradient(from 0deg at 50% 50%, transparent 0deg, color-mix(in srgb, var(--accent) 30%, transparent) 60deg, transparent 140deg, color-mix(in srgb, var(--accent) 18%, transparent) 230deg, transparent 300deg); animation: spin calc(22s * var(--spd)) linear infinite; filter: blur(60px); }
+.t4 .stage::after { content: ""; position: absolute; inset: 0; background-image: radial-gradient(color-mix(in srgb, var(--on-brand) 12%, transparent) 1px, transparent 1px); background-size: 22px 22px; mask-image: radial-gradient(ellipse at center, #000 20%, transparent 70%); }
+@keyframes spin { to { transform: rotate(360deg); } }
+.t4 .stage > * { position: relative; z-index: 1; }
+.t4 .stage .logo { width: 132px; margin: 0 auto 28px; filter: drop-shadow(0 10px 40px color-mix(in srgb, var(--accent) 50%, transparent)); }
+.t4 .stage .logo .green path { fill: var(--on-brand); }
+.t4 .stage h1 { font-size: clamp(44px, 7vw, 104px); line-height: .98; letter-spacing: -.025em; max-width: 14ch; margin: 18px auto 24px; }
+.t4 .stage h1 span { background: linear-gradient(100deg, #D9B866, #F3E2A9 40%, #B8913F 60%, #D9B866); background-size: 200% 100%; -webkit-background-clip: text; background-clip: text; color: transparent; animation: shine calc(6s * var(--spd)) linear infinite; }
+@keyframes shine { to { background-position: -200% 0; } }
+.t4 .stage p { color: color-mix(in srgb, var(--on-brand) 72%, transparent); font-size: 18px; max-width: 560px; margin: 0 auto 36px; }
+.t4 .stage .acts { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+.t4 .sec { padding: 112px 0; }
+.t4 .sec .c { text-align: center; margin-bottom: 48px; } .t4 .sec h2 { font-size: clamp(36px, 4.4vw, 60px); margin-top: 10px; }
+.t4 .cards { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+.t4 .beam { position: relative; border-radius: var(--r); padding: 1px; background: var(--line); overflow: hidden; }
+.t4 .beam::before { content: ""; position: absolute; inset: -60%; background: conic-gradient(from 0deg, transparent 0 300deg, var(--accent) 340deg, transparent 360deg); animation: spin calc(5s * var(--spd)) linear infinite; opacity: 0; transition: opacity .3s; }
+.t4 .beam:hover::before { opacity: 1; }
+.t4 .beam .in { position: relative; height: 100%; border-radius: calc(var(--r) - 1px); background: var(--surface); padding: 30px 26px; display: flex; flex-direction: column; }
+.t4 .beam .n { font-size: 13px; color: var(--accent); letter-spacing: .14em; }
+.t4 .beam h3 { font-size: 24px; line-height: 1.15; margin: 48px 0 10px; }
+.t4 .beam p { font-size: 14px; color: var(--muted); margin-bottom: 18px; }
+.t4 .beam .chips { margin-top: auto; }
+.t4 .tabs { display: inline-flex; gap: 4px; padding: 4px; border: 1px solid var(--line); border-radius: 999px; background: var(--surface); margin-bottom: 32px; }
+.t4 .tabs button { height: 40px; padding: 0 20px; border: 0; border-radius: 999px; background: none; color: var(--muted); font: 500 14px var(--body); cursor: pointer; transition: background-color .3s, color .3s; }
+.t4 .tabs button[aria-selected=true] { background: var(--accent); color: #14171A; }
+.t4 .opane { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; text-align: left; max-width: 860px; margin: 0 auto; padding: 40px; border: 1px solid var(--line); border-radius: var(--r); background: var(--surface); }
+.t4 .opane h3 { font-size: 56px; } .t4 .opane .st { color: var(--muted); }
+.t4 .opane dl { margin: 0; font-size: 14px; } .t4 .opane dt { color: var(--muted); font-size: 12px; letter-spacing: .14em; text-transform: uppercase; margin-top: 12px; } .t4 .opane dd { margin: 2px 0 0; }
+
+/* ---------- motion speed applies to every looping animation ---------- */
+html[data-motion=off] *, html[data-motion=off] *::before, html[data-motion=off] *::after { animation: none !important; }
+html[data-motion=off] .rv { opacity: 1; transform: none; transition: none; }
+
+/* ---------- T5 glass ---------- */
+.t5 { position: relative; isolation: isolate; overflow: hidden; }
+.t5 .blobs { position: fixed; inset: 0; z-index: -1; overflow: hidden; background: var(--bg); }
+.t5 .blobs i { position: absolute; width: 46vw; height: 46vw; border-radius: 50%; filter: blur(70px); opacity: .55; animation: blob calc(18s * var(--spd)) ease-in-out infinite alternate; }
+.t5 .blobs i:nth-child(1) { background: var(--brand); left: -10vw; top: -10vw; }
+.t5 .blobs i:nth-child(2) { background: var(--accent); right: -12vw; top: 20vh; animation-delay: -6s; }
+.t5 .blobs i:nth-child(3) { background: color-mix(in srgb, var(--brand) 60%, var(--accent)); left: 30vw; bottom: -20vw; animation-delay: -12s; }
+@keyframes blob { 50% { transform: translate(8vw, 6vh) scale(1.15); } 100% { transform: translate(-6vw, -4vh) scale(.9); } }
+.glass { background: color-mix(in srgb, var(--surface) 55%, transparent); backdrop-filter: blur(22px) saturate(1.4); -webkit-backdrop-filter: blur(22px) saturate(1.4); border: 1px solid color-mix(in srgb, #fff 35%, transparent); box-shadow: 0 20px 60px -30px rgba(0,0,0,.35), inset 0 1px 0 color-mix(in srgb, #fff 40%, transparent); border-radius: max(var(--r), 18px); }
+.t5 .pill { position: sticky; top: 16px; z-index: 20; margin: 16px auto 0; width: min(1100px, calc(100% - 32px)); display: flex; align-items: center; justify-content: space-between; padding: 10px 10px 10px 20px; border-radius: 999px; }
+.t5 .pill .brand .logo { width: 28px; }
+.t5 .hero { padding: 96px 0 72px; display: grid; grid-template-columns: 1.3fr 1fr; gap: 32px; align-items: center; }
+.t5 .hero .card { padding: 48px; }
+.t5 .hero h1 { font-size: clamp(42px, 5.6vw, 84px); line-height: 1; letter-spacing: -.02em; margin: 18px 0 20px; }
+.t5 .hero h1 span { color: var(--accent); }
+.t5 .hero .lg { padding: 48px; display: grid; place-items: center; animation: float calc(7s * var(--spd)) ease-in-out infinite; }
+.t5 .hero .lg .logo { width: 200px; }
+@keyframes float { 50% { transform: translateY(-14px); } }
+.t5 .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; padding-bottom: 96px; }
+.t5 .grid .card { padding: 32px; transition: transform .4s var(--ease); }
+.t5 .grid .card:hover { transform: translateY(-6px); }
+.t5 .grid h3 { font-size: 28px; margin: 28px 0 10px; }
+.t5 .grid p { color: var(--muted); margin-bottom: 16px; }
+.t5 .offs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; padding-bottom: 112px; }
+.t5 .offs .card { padding: 28px; } .t5 .offs h3 { font-size: 30px; margin: 6px 0 18px; }
+.t5 dl, .t6 dl, .t7 dl, .t8 dl, .t9 dl, .t10 dl { margin: 0; font-size: 14px; }
+.t5 dt, .t6 dt, .t7 dt, .t8 dt, .t9 dt, .t10 dt { color: var(--muted); font-size: 12px; letter-spacing: .12em; text-transform: uppercase; margin-top: 12px; }
+.t5 dd, .t6 dd, .t7 dd, .t8 dd, .t9 dd, .t10 dd { margin: 2px 0 0; }
+
+/* ---------- T6 aurora ---------- */
+.t6 .aur { position: relative; min-height: 92vh; display: flex; align-items: center; overflow: hidden; color: var(--on-brand); background: var(--brand); }
+.t6 .aur .mesh { position: absolute; inset: -20%; background:
+  radial-gradient(40% 50% at 20% 30%, color-mix(in srgb, var(--accent) 70%, transparent), transparent 70%),
+  radial-gradient(35% 45% at 80% 20%, color-mix(in srgb, var(--brand) 40%, #6fb39a), transparent 70%),
+  radial-gradient(45% 55% at 60% 80%, color-mix(in srgb, var(--accent) 45%, var(--brand)), transparent 70%);
+  filter: blur(40px) saturate(1.2); animation: aurora calc(16s * var(--spd)) ease-in-out infinite alternate; }
+@keyframes aurora { 0% { transform: translate(0,0) rotate(0); } 50% { transform: translate(-5%, 4%) rotate(8deg) scale(1.1); } 100% { transform: translate(4%, -3%) rotate(-6deg); } }
+.t6 .aur .wrap { position: relative; }
+.t6 .aur h1 { font-size: clamp(48px, 8vw, 128px); line-height: .95; letter-spacing: -.03em; max-width: 13ch; margin: 22px 0 26px; }
+.t6 .aur h1 .w { display: inline-block; opacity: 0; transform: translateY(40px) rotate(4deg); filter: blur(8px); animation: word calc(.9s * var(--spd)) var(--ease) forwards; }
+@keyframes word { to { opacity: 1; transform: none; filter: none; } }
+.t6 .aur h1 .acc { color: var(--accent); }
+.t6 .aur p { color: color-mix(in srgb, var(--on-brand) 80%, transparent); font-size: 19px; max-width: 540px; }
+.t6 .aur .scroll { position: absolute; bottom: 28px; left: 50%; font-size: 12px; letter-spacing: .2em; text-transform: uppercase; opacity: .7; animation: bob calc(2s * var(--spd)) ease-in-out infinite; }
+@keyframes bob { 50% { transform: translateY(8px); } }
+.t6 .list { padding: 112px 0; }
+.t6 .li { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; padding: 40px 0; border-top: 1px solid var(--line); }
+.t6 .li h3 { font-size: clamp(32px, 4vw, 56px); background: linear-gradient(90deg, var(--ink) 50%, var(--accent) 50%); background-size: 200% 100%; background-position: 0 0; -webkit-background-clip: text; background-clip: text; color: transparent; transition: background-position .7s var(--ease); }
+.t6 .li:hover h3 { background-position: -100% 0; }
+.t6 .li p { color: var(--muted); margin-bottom: 14px; }
+.t6 .off { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; border-top: 1px solid var(--line); padding-bottom: 112px; }
+.t6 .off > div { padding: 32px 28px 0 0; } .t6 .off h3 { font-size: 34px; margin: 6px 0 16px; }
+
+/* ---------- T7 neo-brutalist ---------- */
+.t7 { --bw: 3px; --sh: 6px 6px 0 var(--ink); overflow-x: clip; }
+.t7 .nb-bar { border-bottom: var(--bw) solid var(--ink); background: var(--bg); position: sticky; top: 0; z-index: 20; }
+.t7 .nb-bar .wrap { height: 72px; display: flex; align-items: center; justify-content: space-between; }
+.t7 .nb { border: var(--bw) solid var(--ink); box-shadow: var(--sh); border-radius: min(var(--r), 12px); background: var(--surface); }
+.t7 .nbtn { white-space: nowrap; display: inline-flex; align-items: center; gap: 10px; height: 48px; padding: 0 22px; border: var(--bw) solid var(--ink); background: var(--accent); color: var(--on-accent); font: 700 14px var(--body); text-transform: uppercase; letter-spacing: .04em; text-decoration: none; box-shadow: 4px 4px 0 var(--ink); border-radius: min(var(--r), 10px); transition: transform .12s, box-shadow .12s; cursor: pointer; }
+.t7 .nbtn:hover { transform: translate(-2px, -2px); box-shadow: 6px 6px 0 var(--ink); }
+.t7 .nbtn:active { transform: translate(4px, 4px); box-shadow: 0 0 0 var(--ink); }
+.t7 .nbtn.alt { background: var(--surface); color: var(--ink); }
+.t7 .hero { display: grid; grid-template-columns: 1.5fr 1fr; gap: 24px; padding: 48px 0; }
+.t7 .hero .a { padding: 44px; background: var(--brand); color: var(--on-brand); }
+.t7 .hero h1 { font-size: clamp(44px, 6vw, 92px); line-height: .95; text-transform: uppercase; letter-spacing: -.02em; margin: 18px 0 24px; }
+.t7 .hero h1 span { background: var(--accent); color: var(--on-accent); padding: 0 .12em; box-decoration-break: clone; -webkit-box-decoration-break: clone; }
+.t7 .hero .b { display: grid; place-items: center; padding: 32px; background: var(--accent); transform: rotate(2deg); transition: transform .4s var(--ease); }
+.t7 .hero .b:hover { transform: rotate(-2deg) scale(1.02); }
+.t7 .hero .b .logo { width: 180px; }
+.t7 .ticker { border-block: var(--bw) solid var(--ink); background: var(--ink); color: var(--bg); overflow: hidden; }
+.t7 .ticker .track { display: flex; gap: 40px; width: max-content; padding: 14px 0; font: 800 22px var(--body); text-transform: uppercase; animation: slide calc(24s * var(--spd)) linear infinite; }
+.t7 .pg { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; padding: 56px 0; }
+.t7 .pg .nb { padding: 24px; transition: transform .15s, box-shadow .15s; }
+.t7 .pg .nb:hover { transform: translate(-3px, -3px); box-shadow: 9px 9px 0 var(--ink); }
+.t7 .pg .nb:nth-child(2) { background: color-mix(in srgb, var(--accent) 30%, var(--surface)); }
+.t7 .pg .nb:nth-child(3) { background: color-mix(in srgb, var(--brand) 18%, var(--surface)); }
+.t7 .pg .num { display: inline-block; font: 800 14px var(--body); padding: 4px 10px; border: var(--bw) solid var(--ink); background: var(--bg); }
+.t7 .pg h3 { font-size: 24px; margin: 28px 0 10px; text-transform: uppercase; letter-spacing: -.01em; }
+.t7 .pg p { font-size: 14px; }
+.t7 .offs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; padding-bottom: 96px; }
+.t7 .offs .nb { padding: 26px; } .t7 .offs h3 { font-size: 32px; text-transform: uppercase; margin: 8px 0 14px; }
+.t7 h2.big { font-size: clamp(36px, 5vw, 64px); text-transform: uppercase; margin: 8px 0 24px; }
+
+/* ---------- T8 swiss grid ---------- */
+.t8 { --g: 12; }
+.t8 .mono { font: 500 12px/1.4 ui-monospace, Menlo, monospace; letter-spacing: .04em; text-transform: uppercase; color: var(--muted); }
+.t8 .sbar { border-bottom: 1px solid var(--ink); }
+.t8 .sbar .wrap { height: 64px; display: grid; grid-template-columns: repeat(12, 1fr); align-items: center; gap: 16px; }
+.t8 .sbar .brand { grid-column: span 5; } .t8 .sbar nav { grid-column: 6 / -1; display: flex; justify-content: flex-end; gap: 24px; align-items: center; }
+.t8 .hero { display: grid; grid-template-columns: repeat(12, 1fr); gap: 16px; padding: 64px 0 0; }
+.t8 .hero .idx { grid-column: span 2; }
+.t8 .hero h1 { grid-column: 3 / -1; font-size: clamp(48px, 7.4vw, 116px); line-height: .92; letter-spacing: -.035em; }
+.t8 .hero h1 span { color: var(--accent); }
+.t8 .hero .lead { grid-column: 3 / span 5; margin-top: 40px; font-size: 18px; color: var(--muted); }
+.t8 .hero .lg { grid-column: 10 / -1; margin-top: 40px; } .t8 .hero .lg .logo { width: 100%; max-width: 180px; margin-left: auto; }
+.t8 .rule { height: 1px; background: var(--ink); transform-origin: left; transform: scaleX(0); transition: transform calc(1.2s * var(--spd)) var(--ease); margin-top: 64px; }
+.t8 .rule.in { transform: scaleX(1); }
+.t8 .row { display: grid; grid-template-columns: repeat(12, 1fr); gap: 16px; padding: 40px 0; border-bottom: 1px solid var(--line); align-items: start; }
+.t8 .row .big { grid-column: span 3; font: var(--head-w) clamp(64px, 9vw, 140px)/0.8 var(--head); letter-spacing: -.05em; color: var(--accent); }
+.t8 .row h3 { grid-column: 4 / span 5; font-size: clamp(26px, 2.8vw, 40px); }
+.t8 .row .d { grid-column: 9 / -1; color: var(--muted); }
+.t8 .row .d .chips { margin-top: 12px; }
+.t8 .row:hover .big { animation: nudge .5s var(--ease); }
+@keyframes nudge { 40% { transform: translateX(10px); } }
+.t8 .ofs { display: grid; grid-template-columns: repeat(12, 1fr); gap: 16px; padding: 48px 0 112px; }
+.t8 .ofs .h { grid-column: span 3; } .t8 .ofs .o { grid-column: span 3; border-top: 4px solid var(--ink); padding-top: 16px; }
+.t8 .ofs h3 { font-size: 32px; margin: 6px 0 12px; }
+
+/* ---------- T9 horizontal story ---------- */
+.t9 .open { padding: 96px 0 64px; text-align: center; }
+.t9 .open .logo { width: 96px; margin: 0 auto 24px; }
+.t9 .open h1 { font-size: clamp(44px, 6.6vw, 100px); line-height: .98; letter-spacing: -.025em; max-width: 15ch; margin: 18px auto 22px; }
+.t9 .open h1 span { color: var(--accent); }
+.t9 .open p { max-width: 560px; margin: 0 auto; color: var(--muted); font-size: 18px; }
+.t9 .hs { position: relative; height: 420vh; }
+.t9 .hs .pin { position: sticky; top: 0; height: 100vh; overflow: hidden; display: flex; flex-direction: column; justify-content: center; }
+.t9 .hs .prog { position: absolute; top: 96px; left: 32px; right: 32px; height: 2px; background: var(--line); }
+.t9 .hs .prog i { position: absolute; inset: 0 auto 0 0; width: 0; background: var(--accent); }
+.t9 .hs .strip { display: flex; gap: 32px; padding: 0 8vw; will-change: transform; }
+.t9 .panel { flex: none; width: min(78vw, 860px); min-height: 60vh; border-radius: var(--r); padding: 56px; display: flex; flex-direction: column; justify-content: space-between; background: var(--surface); border: 1px solid var(--line); }
+.t9 .panel:nth-child(odd) { background: var(--brand); color: var(--on-brand); border-color: transparent; }
+.t9 .panel:nth-child(odd) p { color: color-mix(in srgb, var(--on-brand) 75%, transparent); }
+.t9 .panel:nth-child(odd) .chips li { border-color: color-mix(in srgb, var(--on-brand) 30%, transparent); color: inherit; }
+.t9 .panel .n { font: var(--head-w) 96px/1 var(--head); color: var(--accent); }
+.t9 .panel h3 { font-size: clamp(32px, 4vw, 60px); margin: 12px 0 16px; }
+.t9 .panel p { font-size: 18px; color: var(--muted); max-width: 520px; margin-bottom: 20px; }
+.t9 .offs { padding: 112px 0; } .t9 .offs h2 { font-size: clamp(36px, 4.4vw, 60px); margin: 8px 0 32px; }
+.t9 .og { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.t9 .og > div { padding: 28px; border: 1px solid var(--line); border-radius: var(--r); background: var(--surface); } .t9 .og h3 { font-size: 30px; margin: 6px 0 14px; }
+
+/* ---------- T10 3D tilt ---------- */
+.t10 .stage3 { perspective: 1200px; padding: 64px 0 96px; display: grid; grid-template-columns: 1.2fr 1fr; gap: 40px; align-items: center; }
+.t10 h1 { font-size: clamp(44px, 6vw, 92px); line-height: .98; letter-spacing: -.025em; margin: 18px 0 22px; }
+.t10 h1 span { color: var(--accent); }
+.t10 .lead { color: var(--muted); font-size: 18px; max-width: 500px; }
+.t10 .layers { position: relative; aspect-ratio: 1; transform-style: preserve-3d; transition: transform .2s ease-out; }
+.t10 .layers > * { position: absolute; inset: 0; border-radius: 50%; }
+.t10 .layers .l1 { background: radial-gradient(circle, color-mix(in srgb, var(--accent) 35%, transparent), transparent 65%); transform: translateZ(-80px) scale(1.2); }
+.t10 .layers .l2 { border: 1px solid color-mix(in srgb, var(--accent) 50%, transparent); inset: 8%; transform: translateZ(-30px); animation: spin calc(40s * var(--spd)) linear infinite; border-style: dashed; }
+.t10 .layers .l3 { inset: 18%; background: var(--surface); border: 1px solid var(--line); box-shadow: 0 40px 80px -40px rgba(0,0,0,.45); transform: translateZ(20px); }
+.t10 .layers .l4 { inset: 28%; display: grid; place-items: center; transform: translateZ(80px); border-radius: 0; }
+.t10 .layers .l4 .logo { width: 100%; }
+.t10 .tc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; padding-bottom: 96px; perspective: 900px; }
+.t10 .tilt { transform-style: preserve-3d; transition: transform .25s ease-out, box-shadow .25s; padding: 28px; border-radius: var(--r); background: var(--surface); border: 1px solid var(--line); position: relative; overflow: hidden; }
+.t10 .tilt::after { content: ""; position: absolute; inset: 0; background: radial-gradient(300px circle at var(--gx, 50%) var(--gy, 0%), color-mix(in srgb, #fff 30%, transparent), transparent 60%); opacity: 0; transition: opacity .3s; pointer-events: none; }
+.t10 .tilt:hover::after { opacity: 1; }
+.t10 .tilt:hover { box-shadow: 0 30px 60px -30px rgba(0,0,0,.4); }
+.t10 .tilt > * { transform: translateZ(30px); }
+.t10 .tilt .n { font-size: 13px; color: var(--accent); } .t10 .tilt h3 { font-size: 24px; margin: 40px 0 10px; } .t10 .tilt p { font-size: 14px; color: var(--muted); }
+.t10 .offs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; padding-bottom: 112px; }
+.t10 .offs .tilt h3 { margin-top: 6px; font-size: 30px; }
+
+@media (max-width: 900px) {
+  .t5 .hero, .t5 .grid, .t5 .offs, .t6 .li, .t6 .off, .t7 .hero, .t7 .offs, .t9 .og, .t10 .stage3, .t10 .offs { grid-template-columns: 1fr; }
+  .t5 .hero .card, .t5 .hero .lg { padding: 28px; } .t5 .hero .lg .logo { width: 120px; }
+  .t7 .pg, .t10 .tc { grid-template-columns: 1fr 1fr; }
+  .t8 .hero h1, .t8 .hero .lead { grid-column: 1 / -1; } .t8 .hero .idx { grid-column: 1 / -1; } .t8 .hero .lg { grid-column: 1 / -1; margin-top: 24px; } .t8 .hero .lg .logo { margin-left: 0; max-width: 96px; }
+  .t8 .row .big { grid-column: 1 / -1; } .t8 .row h3, .t8 .row .d { grid-column: 1 / -1; }
+  .t8 .ofs .h, .t8 .ofs .o { grid-column: 1 / -1; } .t8 .sbar .brand { grid-column: span 8; } .t8 .sbar nav { grid-column: 9 / -1; }
+  .t9 .hs { height: auto; } .t9 .hs .pin { position: static; height: auto; } .t9 .hs .strip { flex-direction: column; padding: 0 18px; transform: none !important; } .t9 .panel { width: 100%; min-height: 0; padding: 32px; } .t9 .hs .prog { display: none; }
+  .t10 .layers { max-width: 280px; }
+}
+@media (max-width: 600px) { .t7 .pg, .t10 .tc { grid-template-columns: 1fr; } .t7 .hero .b { transform: none; } .t7 { --sh: 4px 4px 0 var(--ink); } .t7 .hero .a { padding: 26px; } .t5 .pill .nav a.l { display: none; } .t6 .aur { min-height: 0; padding: 72px 0 96px; } .t8 .sbar nav a.l { display: none; } }
+
+/* ---------- small screens ---------- */
+@media (max-width: 900px) {
+  .t1 .hero .under, .t1 .sec-h, .t1 .offices { grid-template-columns: 1fr; }
+  .t1 .office, .t1 .office + .office { padding: 28px 0; border-right: 0; border-bottom: 1px solid var(--line); }
+  .t1 .hero .wm { width: 300px; right: -90px; }
+  .t2 .tile.hero, .t2 .tile.logo, .t2 .tile.pa, .t2 .tile.off, .t2 .tile.cta { grid-column: span 12; }
+  .t2 .tile.stat { grid-column: span 4; }
+  .t2 .tile.hero { padding: 28px; }
+  .t2 .tile.logo { grid-row: span 1; padding: 20px; } .t2 .tile.logo .logo { width: 90px; }
+  .t2 .tile.off { grid-template-columns: 1fr; } .t2 .tile.off > div { border-left: 0; border-top: 1px solid var(--line); } .t2 .tile.off > div:first-child { border-top: 0; }
+  .t2 .tile.cta { flex-direction: column; align-items: start; }
+  .t3 .split { grid-template-columns: 1fr; }
+  .t3 .left { position: relative; height: auto; padding: 28px 20px 40px; }
+  .t3 .left .logo { margin: 40px 0 24px; width: 88px; }
+  .t3 .rail { display: none; }
+  .t3 .right { padding: 0 20px; } .t3 .right .top { display: none; }
+  .t3 .pa { min-height: 0; } .t3 .pa .n { font-size: 72px; }
+  .t4 .cards { grid-template-columns: 1fr 1fr; }
+  .t4 .opane { grid-template-columns: 1fr; gap: 20px; padding: 28px; }
+}
+@media (max-width: 600px) {
+  .wrap { padding: 0 18px; }
+  .nav a.l { display: none; }
+  .brand b { font-size: 13px; }
+  .t1 .prow { grid-template-columns: 44px 1fr 40px; gap: 12px; } .t1 .prow .ar { width: 40px; height: 40px; }
+  .t1 .sec { padding: 72px 0; } .t1 .ribbon .track { font-size: 22px; }
+  .t2 .tile.stat { grid-column: span 6; } .t2 .tile.stat:last-of-type { grid-column: span 12; }
+  .t4 .cards { grid-template-columns: 1fr; } .t4 .opane h3 { font-size: 40px; } .t4 .tabs button { padding: 0 14px; }
+  .foot .row { flex-direction: column; }
+  dialog { padding: 28px 22px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+  .rv { opacity: 1; transform: none; }
+}
+</style>
+</head>
+<body>
+<div id="app"></div>
+<dialog id="disc" aria-labelledby="disc-t">
+  <p class="eyebrow">Disclaimer</p>
+  <h2 id="disc-t">Before you continue</h2>
+  <p>The Bar Council of India does not permit advocates to solicit work or advertise in any manner. By clicking "I agree", you confirm that:</p>
+  <p>You are seeking information about Bhat &amp; Kochikar Advocates of your own accord, & there has been no advertisement, solicitation or inducement of any kind from the firm or its members.</p>
+  <p>The information on this website is for general information only. It is not legal advice, & using this website does not create an advocate-client relationship.</p>
+  <button class="btn btn-accent" type="button" id="agree" style="margin-top:16px">I agree</button>
+</dialog>
+<script type="module">
+import {PRESETS, themeVars} from './themes.js';
+
+// Text is copied from the live index.html. Office contact details are not on the live site yet.
+const S = {
+  cities: 'Bangalore · Mangalore · Kasaragod',
+  lead: 'A law practice in Karnataka & Kerala, working in litigation, arbitration, intellectual property & real estate.',
+  practice: [
+    {n:'01', t:'Dispute Resolution, Civil & Criminal', d:'Civil & criminal proceedings, from the first notice through trial & appeal.', tags:['Civil suits','Recovery','Injunctions','Bail & trials','Appeals']},
+    {n:'02', t:'Intellectual Property Rights', d:'Protection & enforcement of trademarks, copyright & designs.', tags:['Registration','Oppositions','Infringement','Passing off']},
+    {n:'03', t:'Arbitration', d:'Domestic arbitration, & the court proceedings that support or challenge it.', tags:['Appointments','Proceedings','Interim relief','Enforcement']},
+    {n:'04', t:'Real Estate', d:'Property transactions & property disputes.', tags:['Title verification','Sale & lease','Development','Partition']},
+  ],
+  offices: [{c:'Bangalore', s:'Karnataka'}, {c:'Mangalore', s:'Karnataka'}, {c:'Kasaragod', s:'Kerala'}],
+};
+const ARROW = '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2 8h12M9 3l5 5-5 5"/></svg>';
+const DIAG = '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M4 12L12 4M5 4h7v7"/></svg>';
+const TODO = '<span class="todo">To be added</span>';
+const chips = tags => `<ul class="chips">${tags.map(t => `<li>${t}</li>`).join('')}</ul>`;
+const contact = `<dl><dt>Address</dt><dd>${TODO}</dd><dt>Phone</dt><dd>${TODO}</dd><dt>Email</dt><dd>${TODO}</dd></dl>`;
+const LOGO = '<div class="logo" data-logo></div>';
+const bar = (links = true) => `<header class="bar"><div class="wrap">
+  <a class="brand" href="#">${LOGO}<span><b>Bhat &amp; Kochikar</b><small>Advocates</small></span></a>
+  <nav class="nav" aria-label="Main">${links ? '<a class="l" href="#practice">Practice areas</a><a class="l" href="#offices">Offices</a>' : ''}<a class="btn btn-accent" href="#offices">Contact</a></nav></div></header>`;
+const foot = `<footer class="foot"><div class="wrap">
+  <div class="big">Bhat <span>&amp;</span><br>Kochikar</div>
+  <div class="row"><span>© 2026 Bhat &amp; Kochikar Advocates · ${S.cities}</span><button type="button" data-disc>Read the full disclaimer</button></div></div></footer>`;
+
+const T = {
+  t1: () => `${bar()}<main class="t1">
+    <section class="hero"><div class="wm" aria-hidden="true">${LOGO}</div><div class="wrap">
+      <p class="eyebrow rv">${S.cities}</p>
+      <h1 class="rv">Counsel in disputes, arbitration, <em>property & IP.</em></h1>
+      <div class="under rv"><p>${S.lead}</p><a class="btn btn-accent" href="#practice">Our practice ${ARROW}</a></div></div></section>
+    <div class="ribbon" aria-hidden="true"><div class="track">${[...S.practice, ...S.practice, ...S.practice, ...S.practice].map(p => `<span>${p.t}</span>`).join('')}</div></div>
+    <section class="sec" id="practice"><div class="wrap">
+      <div class="sec-h rv"><div><p class="eyebrow">Practice areas</p><h2>What we do</h2></div><p class="muted">Four areas of practice, handled from each of our three offices.</p></div>
+      <div class="rows">${S.practice.map((p, i) => `<article class="prow rv${i === 0 ? ' open' : ''}" tabindex="0" data-acc><span class="n">${p.n}</span><div><h3>${p.t}</h3><div class="more"><div><p>${p.d}</p>${chips(p.tags)}</div></div></div><span class="ar">${DIAG}</span></article>`).join('')}</div>
+    </div></section>
+    <section class="sec" id="offices" style="padding-top:0"><div class="wrap">
+      <div class="sec-h rv"><div><p class="eyebrow">Offices</p><h2>Where to find us</h2></div><p class="muted">Visit or write to any of our three offices.</p></div>
+      <div class="offices">${S.offices.map(o => `<div class="office rv"><p class="eyebrow">${o.s}</p><h3>${o.c}</h3>${contact}</div>`).join('')}</div>
+    </div></section></main>${foot}`,
+
+  t2: () => `${bar()}<main class="t2"><div class="wrap"><div class="bento">
+    <div class="tile hero rv"><p class="eyebrow">${S.cities}</p><div><h1>Counsel in disputes, arbitration, <span>property & IP.</span></h1><p>${S.lead}</p>
+      <div style="display:flex;gap:12px;flex-wrap:wrap"><a class="btn btn-accent" href="#practice">Our practice ${ARROW}</a><a class="btn btn-line" href="#offices">Find an office</a></div></div></div>
+    <div class="tile logo rv">${LOGO}</div>
+    <div class="tile stat rv"><b data-count="3">0</b><span>Offices</span></div>
+    <div class="tile stat rv"><b data-count="2">0</b><span>States</span></div>
+    ${S.practice.map((p, i) => `<article class="tile pa rv" ${i === 0 ? 'id="practice"' : ''} tabindex="0"><div class="n"><span>${p.n}</span>${DIAG.replace('<svg', '<svg width="16"')}</div><h3>${p.t}</h3><p>${p.d}</p>${chips(p.tags.slice(0, 3))}</article>`).join('')}
+    <div class="tile off rv" id="offices"><div><p class="eyebrow">Offices</p><h2>Where to find us</h2></div>${S.offices.map(o => `<div><h3>${o.c}</h3><p class="st">${o.s}</p>${contact}</div>`).join('')}</div>
+    <div class="tile cta rv"><h2>Need to speak to us?</h2><a class="btn" href="#offices">Contact an office ${ARROW}</a></div>
+  </div></div></main>${foot}`,
+
+  t3: () => `<main class="t3"><div class="split">
+    <aside class="left"><div class="glow"></div>
+      <a class="brand" href="#" style="color:inherit"><span><b>Bhat &amp; Kochikar</b><small>Advocates</small></span></a>
+      ${LOGO}<p class="eyebrow">${S.cities}</p><h1 style="margin-top:14px">Counsel in disputes, arbitration, <span>property & IP.</span></h1><p>${S.lead}</p>
+      <nav class="rail" aria-label="Sections">${S.practice.map((p, i) => `<a href="#pa${i}" data-rail="pa${i}"><i></i>${p.t}</a>`).join('')}<a href="#offices" data-rail="offices"><i></i>Offices</a></nav></aside>
+    <div class="right"><div class="top"><a class="btn btn-accent" href="#offices">Contact</a></div>
+      ${S.practice.map((p, i) => `<section class="pa" id="pa${i}" ${i === 0 ? 'data-first' : ''}><span class="n rv">${p.n}</span><p class="eyebrow rv">Practice area</p><h2 class="rv">${p.t}</h2><p class="rv">${p.d}</p><div class="rv">${chips(p.tags)}</div></section>`).join('')}
+      <section class="offices" id="offices"><p class="eyebrow">Offices</p><h2>Where to find us</h2>${S.offices.map(o => `<div class="orow rv"><div><h3>${o.c}</h3><span class="st">${o.s}</span></div><div class="c">${contact}</div></div>`).join('')}</section>
+    </div></div></main>${foot}`,
+
+  t4: () => `${bar()}<main class="t4">
+    <section class="stage"><div class="wrap">${LOGO}<p class="eyebrow">${S.cities}</p><h1>Counsel in disputes, arbitration, <span>property & IP.</span></h1><p>${S.lead}</p>
+      <div class="acts"><a class="btn btn-accent" href="#practice">Our practice ${ARROW}</a><a class="btn btn-line" href="#offices">Find an office</a></div></div></section>
+    <section class="sec" id="practice"><div class="wrap"><div class="c rv"><p class="eyebrow">Practice areas</p><h2>What we do</h2></div>
+      <div class="cards">${S.practice.map(p => `<div class="beam rv"><div class="in"><span class="n">${p.n}</span><h3>${p.t}</h3><p>${p.d}</p>${chips(p.tags.slice(0, 3))}</div></div>`).join('')}</div></div></section>
+    <section class="sec" id="offices" style="padding-top:0"><div class="wrap" style="text-align:center"><div class="c rv"><p class="eyebrow">Offices</p><h2>Where to find us</h2></div>
+      <div class="tabs" role="tablist">${S.offices.map((o, i) => `<button role="tab" type="button" aria-selected="${i === 0}" data-office="${i}">${o.c}</button>`).join('')}</div>
+      <div class="opane" role="tabpanel"><div><p class="eyebrow" data-os>${S.offices[0].s}</p><h3 data-oc>${S.offices[0].c}</h3></div>${contact}</div></div></section>
+  </main>${foot}`,
+
+  t5: () => `<main class="t5"><div class="blobs" aria-hidden="true"><i></i><i></i><i></i></div>
+    <header class="pill glass"><a class="brand" href="#">${LOGO}<span><b>Bhat &amp; Kochikar</b><small>Advocates</small></span></a>
+      <nav class="nav" aria-label="Main"><a class="l" href="#practice">Practice areas</a><a class="l" href="#offices">Offices</a><a class="btn btn-accent" href="#offices" style="border-radius:999px">Contact</a></nav></header>
+    <div class="wrap"><section class="hero"><div class="card glass rv"><p class="eyebrow">${S.cities}</p><h1>Counsel in disputes, arbitration, <span>property & IP.</span></h1><p class="muted" style="font-size:18px">${S.lead}</p>
+      <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:28px"><a class="btn btn-accent" href="#practice" style="border-radius:999px">Our practice ${ARROW}</a><a class="btn btn-line" href="#offices" style="border-radius:999px">Find an office</a></div></div>
+      <div class="lg glass rv">${LOGO}</div></section>
+    <div class="rv" id="practice" style="margin-bottom:24px"><p class="eyebrow">Practice areas</p><h2 style="font-size:clamp(36px,4.4vw,60px);margin-top:8px">What we do</h2></div>
+    <div class="grid">${S.practice.map(p => `<article class="card glass rv"><span class="eyebrow">${p.n}</span><h3>${p.t}</h3><p>${p.d}</p>${chips(p.tags)}</article>`).join('')}</div>
+    <div class="rv" id="offices" style="margin-bottom:24px"><p class="eyebrow">Offices</p><h2 style="font-size:clamp(36px,4.4vw,60px);margin-top:8px">Where to find us</h2></div>
+    <div class="offs">${S.offices.map(o => `<div class="card glass rv"><p class="eyebrow">${o.s}</p><h3>${o.c}</h3>${contact}</div>`).join('')}</div></div></main>${foot}`,
+
+  t6: () => `${bar()}<main class="t6">
+    <section class="aur"><div class="mesh" aria-hidden="true"></div><div class="wrap"><p class="eyebrow" style="color:var(--on-brand);opacity:.8">${S.cities}</p>
+      <h1 data-words>Counsel in disputes, arbitration, <span class="acc">property & IP.</span></h1><p>${S.lead}</p>
+      <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:32px"><a class="btn btn-accent" href="#practice">Our practice ${ARROW}</a><a class="btn btn-line" href="#offices">Find an office</a></div></div>
+      <span class="scroll" aria-hidden="true">Scroll</span></section>
+    <section class="list wrap" id="practice"><p class="eyebrow rv">Practice areas</p><h2 class="rv" style="font-size:clamp(36px,4.4vw,60px);margin:8px 0 40px">What we do</h2>
+      ${S.practice.map(p => `<article class="li rv"><h3>${p.t}</h3><div><p>${p.d}</p>${chips(p.tags)}</div></article>`).join('')}</section>
+    <section class="wrap" id="offices"><p class="eyebrow rv">Offices</p><h2 class="rv" style="font-size:clamp(36px,4.4vw,60px);margin:8px 0 32px">Where to find us</h2>
+      <div class="off">${S.offices.map(o => `<div class="rv"><p class="eyebrow">${o.s}</p><h3>${o.c}</h3>${contact}</div>`).join('')}</div></section></main>${foot}`,
+
+  t7: () => `<main class="t7"><header class="nb-bar"><div class="wrap"><a class="brand" href="#">${LOGO}<span><b>Bhat &amp; Kochikar</b><small>Advocates</small></span></a><a class="nbtn" href="#offices">Contact</a></div></header>
+    <div class="wrap"><section class="hero"><div class="a nb rv"><p class="eyebrow" style="color:var(--accent)">${S.cities}</p><h1>Counsel in disputes, arbitration, <span>property & IP.</span></h1><p style="opacity:.85;max-width:520px">${S.lead}</p>
+      <div style="display:flex;gap:14px;flex-wrap:wrap;margin-top:28px"><a class="nbtn" href="#practice">Our practice ${ARROW}</a><a class="nbtn alt" href="#offices">Find an office</a></div></div>
+      <div class="b nb rv">${LOGO}</div></section></div>
+    <div class="ticker" aria-hidden="true"><div class="track">${[...S.practice, ...S.practice, ...S.practice, ...S.practice].map(p => `<span>${p.t} ★</span>`).join('')}</div></div>
+    <div class="wrap"><section id="practice"><div class="pg">${S.practice.map(p => `<article class="nb rv"><span class="num">${p.n}</span><h3>${p.t}</h3><p>${p.d}</p></article>`).join('')}</div></section>
+      <section id="offices"><h2 class="big rv">Where to find us</h2><div class="offs">${S.offices.map(o => `<div class="nb rv"><span class="num">${o.s}</span><h3>${o.c}</h3>${contact}</div>`).join('')}</div></section></div></main>${foot}`,
+
+  t8: () => `<main class="t8"><header class="sbar"><div class="wrap"><a class="brand" href="#">${LOGO}<span><b>Bhat &amp; Kochikar</b><small>Advocates</small></span></a><nav><a class="l mono" href="#practice">Practice</a><a class="l mono" href="#offices">Offices</a><a class="btn btn-accent" href="#offices" style="height:36px;border-radius:0">Contact</a></nav></div></header>
+    <div class="wrap"><section class="hero"><div class="idx mono rv">(01)<br>Firm</div><h1 class="rv">Counsel in disputes, arbitration, <span>property & IP.</span></h1><p class="lead rv">${S.lead}</p><div class="lg rv">${LOGO}</div></section>
+      <div class="rule" data-line></div>
+      <section id="practice"><div class="mono rv" style="padding:24px 0">(02) Practice areas: ${S.practice.length}</div>${S.practice.map(p => `<article class="row rv"><span class="big">${p.n}</span><h3>${p.t}</h3><div class="d">${p.d}${chips(p.tags)}</div></article>`).join('')}</section>
+      <section id="offices" class="ofs"><div class="h rv"><div class="mono">(03) Offices</div><h2 style="font-size:40px;margin-top:10px">Where to find us</h2></div>${S.offices.map(o => `<div class="o rv"><div class="mono">${o.s}</div><h3>${o.c}</h3>${contact}</div>`).join('')}</section></div></main>${foot}`,
+
+  t9: () => `${bar()}<main class="t9"><section class="open wrap">${LOGO}<p class="eyebrow rv">${S.cities}</p><h1 class="rv">Counsel in disputes, arbitration, <span>property & IP.</span></h1><p class="rv">${S.lead}</p></section>
+    <section class="hs" id="practice"><div class="pin"><div class="prog"><i data-prog></i></div><div class="strip" data-strip>
+      ${S.practice.map(p => `<article class="panel"><span class="n">${p.n}</span><div><p class="eyebrow">Practice area</p><h3>${p.t}</h3><p>${p.d}</p>${chips(p.tags)}</div></article>`).join('')}</div></div></section>
+    <section class="offs wrap" id="offices"><p class="eyebrow rv">Offices</p><h2 class="rv">Where to find us</h2><div class="og">${S.offices.map(o => `<div class="rv"><p class="eyebrow">${o.s}</p><h3>${o.c}</h3>${contact}</div>`).join('')}</div></section></main>${foot}`,
+
+  t10: () => `${bar()}<main class="t10"><div class="wrap"><section class="stage3"><div><p class="eyebrow rv">${S.cities}</p><h1 class="rv">Counsel in disputes, arbitration, <span>property & IP.</span></h1><p class="lead rv">${S.lead}</p>
+      <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:28px" class="rv"><a class="btn btn-accent" href="#practice">Our practice ${ARROW}</a><a class="btn btn-line" href="#offices">Find an office</a></div></div>
+      <div class="layers" data-par aria-hidden="true"><div class="l1"></div><div class="l2"></div><div class="l3"></div><div class="l4">${LOGO}</div></div></section>
+    <div id="practice" class="rv" style="margin-bottom:24px"><p class="eyebrow">Practice areas</p><h2 style="font-size:clamp(36px,4.4vw,60px);margin-top:8px">What we do</h2></div>
+    <div class="tc">${S.practice.map(p => `<article class="tilt rv" data-tilt><span class="n">${p.n}</span><h3>${p.t}</h3><p>${p.d}</p></article>`).join('')}</div>
+    <div id="offices" class="rv" style="margin-bottom:24px"><p class="eyebrow">Offices</p><h2 style="font-size:clamp(36px,4.4vw,60px);margin-top:8px">Where to find us</h2></div>
+    <div class="offs">${S.offices.map(o => `<div class="tilt rv" data-tilt><p class="eyebrow">${o.s}</p><h3>${o.c}</h3>${contact}</div>`).join('')}</div></div></main>${foot}`,
+};
+
+// ----- state from the URL hash: #t=t1&p=logo&o={json overrides} -----
+function readHash() { const h = new URLSearchParams(location.hash.slice(1)); let o = {}; try { o = JSON.parse(h.get('o') || '{}'); } catch {} return {t: h.get('t') || 't1', p: h.get('p') || 'logo', o}; }
+let svgText = '';
+async function render() {
+  const st = readHash();
+  const theme = {...(PRESETS[st.p] || PRESETS.logo), ...st.o};
+  for (const [k, v] of Object.entries(themeVars(theme))) document.documentElement.style.setProperty(k, v);
+  document.documentElement.dataset.motion = theme.motion || 'calm';
+  document.querySelector('meta[name=theme-color]')?.remove();
+  if (document.body.dataset.t !== st.t) {
+    document.body.dataset.t = st.t;
+    document.getElementById('app').innerHTML = (T[st.t] || T.t1)();
+    wire();
+  }
+}
+async function wire() {
+  if (!svgText) svgText = await fetch('assets/mark.svg').then(r => r.text());
+  document.querySelectorAll('[data-logo]').forEach(el => { el.innerHTML = svgText; el.querySelector('svg').removeAttribute('aria-label'); el.querySelector('svg').setAttribute('aria-hidden', 'true'); });
+  // reveal
+  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), {rootMargin: '0px 0px -8% 0px'});
+  document.querySelectorAll('.rv').forEach(el => io.observe(el));
+  // T1 rows: hover opens on pointer devices, click/Enter toggles everywhere
+  document.querySelectorAll('[data-acc]').forEach(r => {
+    const open = () => { document.querySelectorAll('[data-acc]').forEach(x => x.classList.toggle('open', x === r)); };
+    r.addEventListener('click', open); r.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(); } });
+    if (matchMedia('(hover: hover)').matches) r.addEventListener('mouseenter', open);
+  });
+  // T2 spotlight + counters
+  document.querySelectorAll('.t2 .tile').forEach(t => t.addEventListener('pointermove', e => { const b = t.getBoundingClientRect(); t.style.setProperty('--mx', (e.clientX - b.left) + 'px'); t.style.setProperty('--my', (e.clientY - b.top) + 'px'); }));
+  document.querySelectorAll('[data-count]').forEach(el => { const n = +el.dataset.count; let i = 0; const step = () => { el.textContent = ++i; if (i < n) setTimeout(step, 260); }; setTimeout(step, 400); });
+  // T3 rail follows scroll
+  const rails = document.querySelectorAll('[data-rail]');
+  if (rails.length) { const ro = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) rails.forEach(a => a.classList.toggle('on', a.dataset.rail === e.target.id)); }), {rootMargin: '-45% 0px -45% 0px'}); document.querySelectorAll('.t3 .pa, .t3 .offices').forEach(s => ro.observe(s)); rails[0].classList.add('on'); }
+  // T4 office tabs
+  document.querySelectorAll('[data-office]').forEach(b => b.addEventListener('click', () => { const o = S.offices[+b.dataset.office]; document.querySelectorAll('[data-office]').forEach(x => x.setAttribute('aria-selected', x === b)); document.querySelector('[data-oc]').textContent = o.c; document.querySelector('[data-os]').textContent = o.s; }));
+  // T6 headline types in word by word
+  document.querySelectorAll('[data-words]').forEach(h => { let i = 0; const split = node => [...node.childNodes].forEach(n => { if (n.nodeType === 3) { const f = document.createDocumentFragment(); n.textContent.split(/(\s+)/).forEach(w => { if (!w.trim()) { f.append(w); return; } const s = document.createElement('span'); s.className = 'w'; s.textContent = w; s.style.animationDelay = `calc(${i++ * 0.09}s * var(--spd))`; f.append(s); }); n.replaceWith(f); } else split(n); }); split(h); });
+  // T8 rule draws when seen
+  document.querySelectorAll('[data-line]').forEach(el => io.observe(el));
+  // T9 vertical scroll drives the strip sideways
+  const strip = document.querySelector('[data-strip]');
+  if (strip) { const hs = strip.closest('.hs'), bar = document.querySelector('[data-prog]');
+    const onS = () => { if (innerWidth <= 900) return; const r = hs.getBoundingClientRect(); const max = hs.offsetHeight - innerHeight; const p = Math.min(1, Math.max(0, -r.top / max)); strip.style.transform = `translateX(${-p * (strip.scrollWidth - innerWidth)}px)`; bar.style.width = (p * 100) + '%'; };
+    addEventListener('scroll', onS, {passive: true}); addEventListener('resize', onS); onS(); }
+  // T10 tilt & parallax (pointer devices only)
+  if (matchMedia('(hover: hover)').matches) {
+    document.querySelectorAll('[data-tilt]').forEach(c => { c.addEventListener('pointermove', e => { const b = c.getBoundingClientRect(), x = (e.clientX - b.left) / b.width, y = (e.clientY - b.top) / b.height; c.style.transform = `rotateY(${(x - .5) * 14}deg) rotateX(${(.5 - y) * 14}deg)`; c.style.setProperty('--gx', x * 100 + '%'); c.style.setProperty('--gy', y * 100 + '%'); }); c.addEventListener('pointerleave', () => { c.style.transform = ''; }); });
+    const par = document.querySelector('[data-par]'); if (par) addEventListener('pointermove', e => { const x = e.clientX / innerWidth - .5, y = e.clientY / innerHeight - .5; par.style.transform = `rotateY(${x * 22}deg) rotateX(${-y * 22}deg)`; });
+  }
+  // disclaimer
+  const d = document.getElementById('disc');
+  document.querySelectorAll('[data-disc]').forEach(b => b.addEventListener('click', () => d.showModal()));
+  window.__ready = true;
+}
+document.getElementById('agree').addEventListener('click', () => document.getElementById('disc').close());
+window.addEventListener('hashchange', render);
+render();
+</script>
+</body>
+</html>
